@@ -6,7 +6,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await Firebase.initializeApp(
-    options:const FirebaseOptions(
+    options: const FirebaseOptions(
       apiKey: 'AIzaSyB6-3q7mGJJh12wCg7eY4ITy58lfdAMe3U',
       authDomain: 'auto-mintorx.firebaseapp.com',
       projectId: 'auto-mintorx',
@@ -34,3 +34,6 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+//////////////////////hafez
