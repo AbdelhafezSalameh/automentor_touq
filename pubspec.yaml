@@ -67,6 +67,9 @@ flutter:
   assets:
      - assets/images/
      - assets/icons/
+     - assets/images/car_logos/
+     - assets/images/bike_logos/
+     - assets/images/classic_cars-logos/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
