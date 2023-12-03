@@ -1,6 +1,9 @@
-import 'package:auto_mentorx/intro_screens/onboarding_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:auto_mentorx/routes.dart';
+import 'package:auto_mentorx/screens/home/home_screen.dart';
+import 'package:auto_mentorx/screens/splash/splash_screen.dart';
+import 'package:auto_mentorx/theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,21 +22,14 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: OnBoardingScreen(),
+      title: 'The Flutter Way - Template',
+      theme: AppTheme.lightTheme(context),
+      initialRoute: SplashScreen.routeName,
+      routes: routes,
     );
   }
 }
-
-
-//////////////////////hafez

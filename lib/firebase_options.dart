@@ -63,6 +63,6 @@ class DefaultFirebaseOptions {
     messagingSenderId: '921794004450',
     projectId: 'auto-mintorx',
     storageBucket: 'auto-mintorx.appspot.com',
-    iosBundleId: 'com.example.autoMentorx',
+    iosBundleId: 'com.example.auto_mentorxx',
   );
 }
