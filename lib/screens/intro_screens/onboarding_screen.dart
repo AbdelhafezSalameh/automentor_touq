@@ -33,14 +33,14 @@
 //               });
 //             },
 //             children: [
-//               const IntroPage1(),
-//               const IntroPage2(),
-//               const IntroPage3(),
+//               IntroPage1(),
+//               IntroPage2(),
+//               IntroPage3(),
 //             ],
 //           ),
 //           // dot indicators
 //           Container(
-//             alignment: const Alignment(0, 0.90),
+//             alignment: Alignment(0, 0.90),
 //             child: Row(
 //               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
 //               children: [
@@ -58,7 +58,7 @@
 
 //                 //dot indicator
 //                 SmoothPageIndicator(
-//                     effect: const ExpandingDotsEffect(
+//                     effect: ExpandingDotsEffect(
 //                         dotColor: Color(0xFFf3f3f3),
 //                         activeDotColor: Color(0xFFE87121),
 //                         dotHeight: 15,
@@ -72,20 +72,20 @@
 //                         onTap: () {
 //                           Navigator.push(context,
 //                               MaterialPageRoute(builder: (context) {
-//                             return const WelcomePage();
+//                             return WelcomePage();
 //                           }));
 //                         },
-//                         child: const Text(
+//                         child: Text(
 //                           'Done',
 //                           style: TextStyle(fontFamily: 'Poppins'),
 //                         ))
 //                     : GestureDetector(
 //                         onTap: () {
 //                           _controller.nextPage(
-//                               duration: const Duration(milliseconds: 200),
+//                               duration: Duration(milliseconds: 200),
 //                               curve: Curves.easeIn);
 //                         },
-//                         child: const Text(
+//                         child: Text(
 //                           'Next',
 //                           style: TextStyle(fontFamily: 'Poppins'),
 //                         )),
