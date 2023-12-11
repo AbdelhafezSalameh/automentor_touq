@@ -79,5 +79,3 @@ List<String> ducatiTexts = [
   'Ducati Desert Sled\n(2017 - 2020)'
 ];
 
-
-//hjbhjbkjbhbhbj
