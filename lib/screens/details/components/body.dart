@@ -22,9 +22,12 @@ class Body extends StatelessWidget {
           color: Colors.white,
           child: Column(
             children: [
-              ProductDescription(
-                product: product,
-                pressOnSeeMore: () {},
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ProductDescription(
+                  product: product,
+                  pressOnSeeMore: () {},
+                ),
               ),
               Column(
                 children: [
@@ -33,7 +36,7 @@ class Body extends StatelessWidget {
                       left: SizeConfig.screenWidth * 0.15,
                       right: SizeConfig.screenWidth * 0.15,
                       bottom: getProportionateScreenWidth(110),
-                      top: getProportionateScreenWidth(70),
+                      top: getProportionateScreenWidth(60),
                     ),
                     child: DefaultButton(
                       text: "Add To Cart",

@@ -72,7 +72,7 @@ class CategoryCard extends StatelessWidget {
                 color: Color(0xFFFFA94A),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: SvgPicture.asset(icon!),
+              child: Image.asset(icon!,fit: BoxFit.contain,),
             ),
             SizedBox(height: 5),
             Text(text!, textAlign: TextAlign.center)

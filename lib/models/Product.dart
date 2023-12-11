@@ -72,7 +72,7 @@ List<Product> demoProducts = [
       "assets/images/Garrett-turbo.jpg",
       "assets/images/GBC_1.jpg",
       "assets/images/GBC_2.jpg",
-      "assets/images/GBC_3.jpg",
+      "assets/images/GBC_3.png",
     ],
     colors: [
       Color(0xFFF6625E),
