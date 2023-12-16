@@ -1,3 +1,4 @@
+import 'package:auto_mentorx/screens/categories_pages/parts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:auto_mentorx/screens/categories_pages/bikes_page.dart';
@@ -35,7 +36,7 @@ class Categories extends StatelessWidget {
               } else if (categories[index]["text"] == 'Classic\nCars') {
                 Navigator.pushNamed(context, ClassicCarsPage.routeName);
               } else if (categories[index]["text"] == 'Parts') {
-                Navigator.pushNamed(context, ProfileScreen.routeName);
+                Navigator.pushNamed(context, PartsPage.routeName);
               }
             },
           ),

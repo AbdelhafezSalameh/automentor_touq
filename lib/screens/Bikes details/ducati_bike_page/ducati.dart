@@ -47,7 +47,7 @@ class DucatiBikeScreen extends LogoDetailScreen {
                       Text(ducatiTexts[itemIndex],
                       style: TextStyle(
                         fontSize: 12,
-                        color: Colors.amber
+                        color: Colors.black
                       ),
                         textAlign: TextAlign.center,
                       ),

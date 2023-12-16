@@ -5,6 +5,7 @@ import 'package:auto_mentorx/screens/home/home_screen.dart';
 import 'package:auto_mentorx/screens/splash/splash_screen.dart';
 import 'package:auto_mentorx/theme.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 

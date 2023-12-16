@@ -2,6 +2,9 @@ import 'package:auto_mentorx/screens/Bikes%20details/ducati_bike_page/ducati.dar
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../Bikes details/bmw_bike_page/bmw.dart';
+
+
 class MotorcyclesPage extends StatelessWidget {
   static String routeName = "/bikes";
 
@@ -28,10 +31,14 @@ class MotorcyclesPage extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      switch (index){
+                      switch (index) {
                         case 0:
                           return DucatiBikeScreen(logoIndex: index);
-                        default: return LogoDetailScreen(logoIndex: index);
+                        case 1:
+                          return BmwBikeScreen(logoIndex: index);
+
+                        default:
+                          return LogoDetailScreen(logoIndex: index);
                       }
                     }
                   ),
@@ -77,10 +84,6 @@ class LogoDetailScreen extends StatelessWidget {
   // Function to get the logo name based on the index
   String getLogoName(int index) {
     switch (index) {
-      case 0:
-        return 'Ducati';
-      case 1:
-        return 'BMW';
       case 2:
         return 'Aprilia';
       case 3:
@@ -88,9 +91,9 @@ class LogoDetailScreen extends StatelessWidget {
       case 4:
         return 'KTM';
       case 5:
-        return 'Custom Logo 1';
+        return 'Suzuki';
       case 6:
-        return 'Custom Logo 2';
+        return 'Kwasaki';
       default:
         return 'Unknown';
     }

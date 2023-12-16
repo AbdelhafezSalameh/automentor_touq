@@ -1,3 +1,5 @@
+import 'package:auto_mentorx/models/Cart.dart';
+import 'package:auto_mentorx/screens/cart/cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_mentorx/components/default_button.dart';
 import 'package:auto_mentorx/models/Product.dart';
@@ -8,16 +10,21 @@ import 'product_description.dart';
 import 'top_rounded_container.dart';
 import 'product_images.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   final Product product;
 
   const Body({Key? key, required this.product}) : super(key: key);
 
   @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
-        ProductImages(product: product),
+        ProductImages(product: widget.product),
         TopRoundedContainer(
           color: Colors.white,
           child: Column(
@@ -25,7 +32,7 @@ class Body extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ProductDescription(
-                  product: product,
+                  product: widget.product,
                   pressOnSeeMore: () {},
                 ),
               ),
@@ -40,7 +47,13 @@ class Body extends StatelessWidget {
                     ),
                     child: DefaultButton(
                       text: "Add To Cart",
-                      press: () {},
+                      press: () {
+                        demoCarts.add(Cart(product: widget.product, numOfItem: 1));
+                        Navigator.pushNamed(context, CartScreen.routeName);
+                        setState(() {
+
+                        });
+                      },
                     ),
                   ),
                 ],

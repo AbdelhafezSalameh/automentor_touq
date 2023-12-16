@@ -7,10 +7,7 @@ class LoginSuccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: SizedBox(),
-        title: Text("Login Success"),
-      ),
+      backgroundColor: Color(0xffe87121),
       body: Body(),
     );
   }

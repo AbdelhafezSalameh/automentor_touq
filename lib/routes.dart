@@ -1,3 +1,7 @@
+
+
+import 'package:auto_mentorx/screens/categories_pages/parts.dart';
+import 'package:auto_mentorx/screens/news/news_page.dart';
 import 'package:flutter/widgets.dart';
 import 'package:auto_mentorx/screens/cart/cart_screen.dart';
 import 'package:auto_mentorx/screens/categories_pages/bikes_page.dart';
@@ -27,9 +31,11 @@ final Map<String, WidgetBuilder> routes = {
   OtpScreen.routeName: (context) => OtpScreen(),
   HomeScreen.routeName: (context) => HomeScreen(),
   MotorcyclesPage.routeName: (context) => MotorcyclesPage(),
-  CarsPage.routeName: (context) => CarsPage(),
+  CarsPage.routeName: (context) => const CarsPage(),
   ClassicCarsPage.routeName: (context) => ClassicCarsPage(),
   DetailsScreen.routeName: (context) => DetailsScreen(),
-  CartScreen.routeName: (context) => CartScreen(),
+  CartScreen.routeName: (context) => const CartScreen(),
   ProfileScreen.routeName: (context) => ProfileScreen(),
+   PartsPage.routeName:(context) => PartsPage(),
+  NewsScreen.routeName:(context) => NewsScreen(),
 };

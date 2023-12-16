@@ -1,3 +1,4 @@
+import 'package:auto_mentorx/screens/login_success/login_success_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_mentorx/constants.dart';
 import 'package:auto_mentorx/screens/sign_in/sign_in_screen.dart';
@@ -86,7 +87,7 @@ class _BodyState extends State<Body> {
                     DefaultButton(
                       text: "Continue",
                       press: () {
-                        Navigator.pushNamed(context, SignInScreen.routeName);
+                        Navigator.pushNamed(context, LoginSuccessScreen.routeName);
                       },
                     ),
                     Spacer(),
