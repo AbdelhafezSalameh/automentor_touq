@@ -19,8 +19,8 @@ class MotorcyclesPage extends StatelessWidget {
         child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            crossAxisSpacing: 40.0,
-            mainAxisSpacing: 40.0,
+            crossAxisSpacing: 80.0,
+            mainAxisSpacing: 60.0,
           ),
           itemCount: bikesImages.length,
           itemBuilder: (BuildContext context, int index) {

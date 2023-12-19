@@ -19,8 +19,8 @@ class CarsPage extends StatelessWidget {
         child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, // Set the number of columns in the grid
-            crossAxisSpacing: 40.0,
-            mainAxisSpacing: 40.0,
+            crossAxisSpacing: 80.0,
+            mainAxisSpacing: 60.0,
           ),
           itemCount: carImages.length,
           itemBuilder: (BuildContext context, int index) {
@@ -88,6 +88,12 @@ class LogoDetailScreen extends StatelessWidget {
         return 'Land Rover';
       case 3:
         return 'Mercedes Benz';
+      case 4:
+        return 'VolksWagen';
+      case 5:
+        return 'Kia';
+      case 6:
+        return 'Huyndai';
       default:
         return 'Unknown';
     }
@@ -99,5 +105,8 @@ List<String> carImages = [
   'assets/images/car_logos/bmw-logo.png',
   'assets/images/car_logos/Land_Rover_logo.png',
   'assets/images/car_logos/Mercedes-Logo.svg.png',
+  'assets/images/car_logos/folkslogo.png',
+  'assets/images/car_logos/kia.jpg',
+  'assets/images/car_logos/huyndai-logo.png'
 
 ];

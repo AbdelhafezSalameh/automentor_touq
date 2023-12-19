@@ -14,8 +14,8 @@ class ClassicCarsPage extends StatelessWidget {
         child: GridView.builder(
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, // Set the number of columns in the grid
-            crossAxisSpacing: 40.0,
-            mainAxisSpacing: 40.0,
+            crossAxisSpacing: 80.0,
+            mainAxisSpacing: 60.0,
           ),
           itemCount: classicCarImages.length,
           itemBuilder: (BuildContext context, int index) {
