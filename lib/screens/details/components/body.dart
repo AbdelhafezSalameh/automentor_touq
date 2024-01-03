@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:auto_mentorx/components/default_button.dart';
 import 'package:auto_mentorx/models/Product.dart';
 import 'package:auto_mentorx/size_config.dart';
-
-import 'color_dots.dart';
 import 'product_description.dart';
 import 'top_rounded_container.dart';
 import 'product_images.dart';

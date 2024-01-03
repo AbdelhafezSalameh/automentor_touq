@@ -4,7 +4,6 @@ import 'package:auto_mentorx/components/custom_surfix_icon.dart';
 import 'package:auto_mentorx/components/form_error.dart';
 import 'package:auto_mentorx/helper/keyboard.dart';
 import 'package:auto_mentorx/screens/forgot_password/forgot_password_screen.dart';
-import 'package:auto_mentorx/screens/login_success/login_success_screen.dart';
 
 import '../../../components/default_button.dart';
 import '../../../constants.dart';

@@ -25,7 +25,6 @@ class _NewsSliderState extends State<NewsSlider> {
     },
   ];
 
-  int _currentPic = 0;
 
   @override
   Widget build(BuildContext context) {

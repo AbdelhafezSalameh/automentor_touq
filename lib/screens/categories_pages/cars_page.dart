@@ -1,3 +1,4 @@
+import 'package:auto_mentorx/size_config.dart';
 import 'package:flutter/material.dart';
 
 import '../cars_details/audi_car_page/audi_cars.dart';
@@ -11,55 +12,88 @@ class CarsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Car Models'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // Set the number of columns in the grid
-            crossAxisSpacing: 80.0,
-            mainAxisSpacing: 60.0,
+        body: Stack(
+      children: [
+        Container(
+          alignment: Alignment.topCenter,
+          height: getProportionateScreenHeight(300),
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Color(0xffe87121), Color(0xffee975c)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomCenter),
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.elliptical(175, 80),
+            ),
           ),
-          itemCount: carImages.length,
-          itemBuilder: (BuildContext context, int index) {
-            return GestureDetector(
-              onTap: () {
-                // Navigate to the screen based on the index
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) {
-                        switch (index) {
-                          case 0:
-                           return AudiCarScreen(logoIndex: index);
-                          case 1:
-                            return BmwCarScreen(logoIndex: index);
-
-                          default:
-                            return LogoDetailScreen(logoIndex: index);
-                        }
-                      }
-                  ),
-                );
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(carImages[index]),
-                ),
-              ),
-            );
-          },
+          child: SafeArea(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(onPressed: (){
+                  Navigator.pop(context);
+                },
+                    icon: Icon(Icons.arrow_back_outlined,color: Colors.white,size: 30,)),
+                 Text('Car Models',style: TextStyle(color: Colors.white,fontSize: 20),),
+                SizedBox(width: 65,)
+              ],
+            ),
+          ),
         ),
-      ),
-    );
+        Padding(
+          padding: const EdgeInsets.only(top: 70),
+          child: Center(
+            child: Container(
+              height: getProportionateScreenHeight(690),
+              width: getProportionateScreenWidth(350),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(40),
+                  color: Color(0xFFF5F6F9)),
+              child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 50.0,
+                      mainAxisSpacing: 40.0),
+                  itemCount: carImages.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) {
+                              switch (index) {
+                                case 0:
+                                  return AudiCarScreen(logoIndex: index);
+                                case 1:
+                                  return BmwCarScreen(logoIndex: index);
+                                default:
+                                  return LogoDetailScreen(logoIndex: index);
+                              }
+                            },
+                          ),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          //color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(25),
+                          child: Image.asset(carImages[index]),
+                        ),
+                      ),
+                    );
+                  }),
+            ),
+          ),
+        )
+      ],
+    ));
   }
 }
+
 class LogoDetailScreen extends StatelessWidget {
   final int logoIndex;
 
@@ -83,7 +117,6 @@ class LogoDetailScreen extends StatelessWidget {
   // Function to get the logo name based on the index
   String getLogoName(int index) {
     switch (index) {
-
       case 2:
         return 'Land Rover';
       case 3:
@@ -108,5 +141,4 @@ List<String> carImages = [
   'assets/images/car_logos/folkslogo.png',
   'assets/images/car_logos/kia.jpg',
   'assets/images/car_logos/huyndai-logo.png'
-
 ];

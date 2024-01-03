@@ -42,7 +42,9 @@ class NewsWidget extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 10,),
-                  Text(desc.toString().contains('null')?'':desc,maxLines: 2,)
+                  Text(desc.toString().contains('null')?'':desc,
+
+                    maxLines: 2,)
                 ],
               ),
             ),

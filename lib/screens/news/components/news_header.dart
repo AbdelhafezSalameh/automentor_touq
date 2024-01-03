@@ -3,7 +3,6 @@ import 'package:auto_mentorx/screens/cart/cart_screen.dart';
 
 import '../../../size_config.dart';
 import '../../home/components/icon_btn_with_counter.dart';
-import '../../home/components/search_field.dart';
 import 'news_search_field.dart';
 
 

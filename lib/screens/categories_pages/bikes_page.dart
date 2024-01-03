@@ -1,18 +1,18 @@
 import 'package:auto_mentorx/screens/Bikes%20details/ducati_bike_page/ducati.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../Bikes details/bmw_bike_page/bmw.dart';
 
 
-class MotorcyclesPage extends StatelessWidget {
+class BikesPage extends StatelessWidget {
   static String routeName = "/bikes";
+
+  const BikesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Motorcycles'),
+        title: Text('Bikes'),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
