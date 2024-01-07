@@ -36,14 +36,14 @@ class _NewsBodyState extends State<NewsBody> {
   Future<void> getData() async {
 
     var response = await dio.get(
-        'https://newsdata.io/api/1/news?apikey=pub_351464ba65445abfb6488893ce4d80870c503&q=automotive&country=gb&language=en');
+        'http://10.7.3.45:8080/get-data');
 
-    List fetchData = response.data['results'];
+    List fetchData = response.data;
     fetchData.forEach((element) {
       newsCard.add(NewsCard(
           title: element['title'].toString(),
           desc: element['description'].toString(),
-          path: element['image_url'].toString()));
+          path: element['path'].toString()));
     });
     newsCard.forEach((element) {
 
@@ -103,7 +103,6 @@ class _NewsBodyState extends State<NewsBody> {
               SizedBox(height: getProportionateScreenWidth(15)),
               isDataFetched
                   ? SizedBox(
-
                 width: double.infinity,
                 height: MediaQuery
                     .of(context)

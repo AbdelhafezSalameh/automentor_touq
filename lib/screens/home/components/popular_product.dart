@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:auto_mentorx/components/product_card.dart';
 import 'package:auto_mentorx/models/Product.dart';
-
 import '../../../size_config.dart';
 import 'section_title.dart';
 

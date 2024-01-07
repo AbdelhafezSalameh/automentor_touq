@@ -4,6 +4,8 @@ import 'package:auto_mentorx/components/default_button.dart';
 import 'package:auto_mentorx/screens/home/home_screen.dart';
 import 'package:auto_mentorx/size_config.dart';
 
+import '../../../components/coustom_bottom_nav_bar.dart';
+
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -64,7 +66,7 @@ class Body extends StatelessWidget {
                   top: 120,
                   left: 125,
                   child: InkWell(onTap: (){
-                    Navigator.pushNamed(context, HomeScreen.routeName);
+                    Navigator.pushNamed(context,  CustomBottomNavBar.routName);
                   },
                     child: RichText(
                       text: TextSpan(

@@ -11,7 +11,6 @@ class NewsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: NewsBody(),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
 
     );
   }

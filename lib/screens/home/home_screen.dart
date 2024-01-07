@@ -4,6 +4,10 @@ import 'package:auto_mentorx/enums.dart';
 import 'package:auto_mentorx/size_config.dart';
 
 import 'components/body.dart';
+import 'components/categories.dart';
+import 'components/home_header.dart';
+import 'components/popular_product.dart';
+import 'components/special_offers.dart';
 
 class HomeScreen extends StatelessWidget {
   static String routeName = "/home";
@@ -11,8 +15,27 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      body: Body(),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: getProportionateScreenHeight(20)),
+              HomeHeader(),
+              SizedBox(height: getProportionateScreenWidth(10)),
+              // DiscountBanner(),
+              Categories(),
+              PopularProducts(),
+
+              SizedBox(height: getProportionateScreenWidth(30)),
+              SpecialOffers(),
+
+              SizedBox(height: getProportionateScreenWidth(30)),
+
+
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

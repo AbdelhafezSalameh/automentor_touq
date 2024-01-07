@@ -7,6 +7,8 @@ import 'components/custom_app_bar.dart';
 class DetailsScreen extends StatelessWidget {
   static String routeName = "/details";
 
+  const DetailsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final ProductDetailsArguments agrs =

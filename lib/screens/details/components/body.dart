@@ -10,7 +10,6 @@ import 'product_images.dart';
 
 class Body extends StatefulWidget {
   final Product product;
-
   const Body({Key? key, required this.product}) : super(key: key);
 
   @override

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:auto_mentorx/models/Product.dart';
 import 'package:auto_mentorx/screens/details/details_screen.dart';
 
@@ -8,11 +7,11 @@ import '../size_config.dart';
 
 class ProductCard extends StatefulWidget {
   const ProductCard({
-    Key? key,
+    super.key,
     this.width = 140,
     this.aspectRetio = 1.02,
     required this.product, required this.favourite,
-  }) : super(key: key);
+  });
 
   final double width, aspectRetio;
   final Product product;
@@ -74,6 +73,7 @@ class _ProductCardState extends State<ProductCard> {
                       setState(() {
                         isFav[widget.favourite] =!isFav[widget.favourite];
                       });
+
                     },
                     child: Container(
                       width: getProportionateScreenWidth(30),
@@ -81,7 +81,7 @@ class _ProductCardState extends State<ProductCard> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: isFav[widget.favourite]?
-                            Colors.pink.shade300:
+                            Color(0xFFFFE6E6):
                             Colors.grey.shade300
                       ),
                       child: isFav[widget.favourite]?

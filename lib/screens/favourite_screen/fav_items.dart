@@ -1,4 +1,6 @@
+import 'package:auto_mentorx/models/Product.dart';
 import 'package:flutter/material.dart';
+import 'package:auto_mentorx/components/product_card.dart';
 
 class FavItems extends StatefulWidget {
   static String routeName = "/fav_items";
@@ -10,29 +12,58 @@ class FavItems extends StatefulWidget {
 }
 
 class _FavItemsState extends State<FavItems> {
-
   @override
   void initState() {
-    isFav
+    int i = 0;
+    isFav.forEach((element) {
+      if (element) {
+        counter.add(i);
+      }
+      i++;
+    });
     super.initState();
   }
 
-
-  List<int>counter=[];
+  List<int> counter = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Fav Items'),
+        automaticallyImplyLeading: false,
       ),
       body: Column(
-        children: List.generate(
-            isFav.le,
-                (index) {
+        children: List.generate(counter.length, (index) {
+          return Column(
+            children: [
+              ListTile(
+                title: Text(demoProducts[counter[index]].title),
+                leading: Image.asset(demoProducts[counter[index]].images[0]),
+                // Assuming images is a list in your ProductModel
+                subtitle: Text(
+                  '${demoProducts[counter[index]].price}',
+                  style: TextStyle(),
+                ),
+                trailing: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      isFav[counter[index]]=false;
+                      counter.remove(index);
 
-                }
-        ),
+                    });
+
+                  },
+                  icon: Icon(
+                    Icons.remove_circle,
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+              Divider()
+            ],
+          );
+        }),
       ),
     );
   }

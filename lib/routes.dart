@@ -1,4 +1,5 @@
 
+
 import 'package:auto_mentorx/manual_details/car_detail_manual_screen.dart';
 import 'package:auto_mentorx/screens/categories_pages/parts.dart';
 import 'package:auto_mentorx/screens/favourite_screen/fav_items.dart';
@@ -18,6 +19,7 @@ import 'package:auto_mentorx/screens/profile/profile_screen.dart';
 import 'package:auto_mentorx/screens/sign_in/sign_in_screen.dart';
 import 'package:auto_mentorx/screens/splash/splash_screen.dart';
 
+import 'components/coustom_bottom_nav_bar.dart';
 import 'screens/sign_up/sign_up_screen.dart';
 
 // We use name route
@@ -41,5 +43,6 @@ final Map<String, WidgetBuilder> routes = {
   NewsScreen.routeName:(context) => NewsScreen(),
   CarDetailScreen.routeName:(context) => CarDetailScreen(),
   ClassicCarsPage.routeName:(context) => ClassicCarsPage(),
-  FavItems.routeName:(context)=>FavItems()
+  FavItems.routeName:(context)=>FavItems(),
+  CustomBottomNavBar.routName:(context) => CustomBottomNavBar()
 };
