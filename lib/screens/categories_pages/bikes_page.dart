@@ -1,7 +1,7 @@
 import 'package:auto_mentorx/screens/Bikes%20details/ducati_bike_page/ducati.dart';
 import 'package:flutter/material.dart';
+import '../../size_config.dart';
 import '../Bikes details/bmw_bike_page/bmw.dart';
-
 
 class BikesPage extends StatelessWidget {
   static String routeName = "/bikes";
@@ -11,53 +11,95 @@ class BikesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Bikes'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 80.0,
-            mainAxisSpacing: 60.0,
+        body: Stack(
+      children: [
+        Container(
+          alignment: Alignment.topCenter,
+          height: getProportionateScreenHeight(300),
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Color(0xffe87121), Color(0xffee975c)],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomCenter),
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.elliptical(175, 80),
+            ),
           ),
-          itemCount: bikesImages.length,
-          itemBuilder: (BuildContext context, int index) {
-            return GestureDetector(
-              onTap: () {
-                // Navigate to the screen based on the index
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      switch (index) {
-                        case 0:
-                          return DucatiBikeScreen(logoIndex: index);
-                        case 1:
-                          return BmwBikeScreen(logoIndex: index);
-
-                        default:
-                          return LogoDetailScreen(logoIndex: index);
-                      }
-                    }
-                  ),
-                );
-              },
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+          child: SafeArea(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Icon(
+                      Icons.arrow_back_outlined,
+                      color: Colors.white,
+                      size: 30,
+                    )),
+                Text(
+                  'Bike Models',
+                  style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(bikesImages[index]),
-                ),
-              ),
-            );
-          },
+                SizedBox(
+                  width: 65,
+                )
+              ],
+            ),
+          ),
         ),
-      ),
-    );
+        Padding(
+          padding: const EdgeInsets.only(top: 70),
+          child: Center(
+            child: Container(
+              height: getProportionateScreenHeight(690),
+              width: getProportionateScreenWidth(350),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(40),
+                  color: Color(0xFFF5F6F9)),
+              child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    crossAxisSpacing: 50.0,
+                    mainAxisSpacing: 40.0,
+                  ),
+                  itemCount: bikesImages.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return GestureDetector(
+                      onTap: () {
+                        // Navigate to the screen based on the index
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) {
+                            switch (index) {
+                              case 0:
+                                return DucatiBikeScreen(logoIndex: index);
+                              case 1:
+                                return BmwBikeScreen(logoIndex: index);
+
+                              default:
+                                return LogoDetailScreen(logoIndex: index);
+                            }
+                          }),
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(25),
+                          child: Image.asset(bikesImages[index]),
+                        ),
+                      ),
+                    );
+                  }),
+            ),
+          ),
+        )
+      ],
+    ));
   }
 }
 
