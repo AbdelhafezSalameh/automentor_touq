@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:auto_mentorx/components/product_card.dart';
 import 'package:auto_mentorx/models/Product.dart';
-
 import '../../../size_config.dart';
 import 'section_title.dart';
 
-class PopularProducts extends StatelessWidget {
+class PopularProducts extends StatefulWidget {
+  const PopularProducts({super.key});
+
+  @override
+  State<PopularProducts> createState() => _PopularProductsState();
+}
+
+class _PopularProductsState extends State<PopularProducts> {
+
+  @override
+  void initState() {
+    List.generate(demoProducts.length, (index) {
+      if(isFav.length  !=  demoProducts.length){
+        isFav.add(false);
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -23,8 +40,11 @@ class PopularProducts extends StatelessWidget {
               ...List.generate(
                 demoProducts.length,
                 (index) {
-                  if (demoProducts[index].isPopular)
-                    return ProductCard(product: demoProducts[index]);
+                  if (demoProducts[index].isPopular) {
+                    return ProductCard(product: demoProducts[index],
+                      favourite: index,
+                    );
+                  }
 
                   return SizedBox
                       .shrink(); // here by default width and height is 0

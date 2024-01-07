@@ -1,33 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:auto_mentorx/models/Product.dart';
 import 'package:auto_mentorx/screens/details/details_screen.dart';
 
 import '../constants.dart';
 import '../size_config.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   const ProductCard({
-    Key? key,
+    super.key,
     this.width = 140,
     this.aspectRetio = 1.02,
-    required this.product,
-  }) : super(key: key);
+    required this.product, required this.favourite,
+  });
 
   final double width, aspectRetio;
   final Product product;
+  final int favourite ;
 
+  @override
+  State<ProductCard> createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
       child: SizedBox(
-        width: getProportionateScreenWidth(width),
+        width: getProportionateScreenWidth(widget.width),
         child: GestureDetector(
           onTap: () => Navigator.pushNamed(
             context,
             DetailsScreen.routeName,
-            arguments: ProductDetailsArguments(product: product),
+            arguments: ProductDetailsArguments(product: widget.product),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,14 +46,14 @@ class ProductCard extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: Hero(
-                    tag: product.id.toString(),
-                    child: Image.asset(product.images[0]),
+                    tag: widget.product.id.toString(),
+                    child: Image.asset(widget.product.images[0]),
                   ),
                 ),
               ),
               const SizedBox(height: 10),
               Text(
-                product.title,
+                widget.product.title,
                 style: TextStyle(color: Colors.black),
                 maxLines: 2,
               ),
@@ -56,34 +61,36 @@ class ProductCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "\$${product.price}",
+                    "\$${widget.product.price}",
                     style: TextStyle(
                       fontSize: getProportionateScreenWidth(18),
                       fontWeight: FontWeight.w600,
                       color: kPrimaryColor,
                     ),
                   ),
-                  InkWell(
-                    borderRadius: BorderRadius.circular(50),
-                    onTap: () {},
+                  GestureDetector(
+                    onTap: (){
+                      setState(() {
+                        isFav[widget.favourite] =!isFav[widget.favourite];
+                      });
+
+                    },
                     child: Container(
-                      padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-                      height: getProportionateScreenWidth(28),
-                      width: getProportionateScreenWidth(28),
+                      width: getProportionateScreenWidth(30),
+                      height: getProportionateScreenHeight(30),
                       decoration: BoxDecoration(
-                        color: product.isFavourite
-                            ? kPrimaryColor.withOpacity(0.15)
-                            : kSecondaryColor.withOpacity(0.1),
                         shape: BoxShape.circle,
+                        color: isFav[widget.favourite]?
+                            Color(0xFFFFE6E6):
+                            Colors.grey.shade300
                       ),
-                      child: SvgPicture.asset(
-                        "assets/icons/Heart Icon_2.svg",
-                        color: product.isFavourite
-                            ? Color(0xFFFF4848)
-                            : Color(0xFFDBDEE4),
-                      ),
+                      child: isFav[widget.favourite]?
+                      const Icon(Icons.favorite,color: Colors.red,):
+
+                       Icon(Icons.favorite,color: Colors.grey.shade100,),
                     ),
-                  ),
+                  )
+
                 ],
               )
             ],
@@ -93,3 +100,4 @@ class ProductCard extends StatelessWidget {
     );
   }
 }
+List<bool> isFav=[];

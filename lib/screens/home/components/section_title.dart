@@ -1,3 +1,4 @@
+import 'package:auto_mentorx/screens/news/news_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../size_config.dart';
@@ -25,7 +26,9 @@ class SectionTitle extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: press,
+          onTap: (){
+            Navigator.pushNamed(context, NewsScreen.routeName);
+          },
           child: Text(
             "See More",
             style: TextStyle(color: Color(0xFFBBBBBB)),

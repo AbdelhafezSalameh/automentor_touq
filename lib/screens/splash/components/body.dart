@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:auto_mentorx/constants.dart';
-import 'package:auto_mentorx/screens/sign_in/sign_in_screen.dart';
 import 'package:auto_mentorx/size_config.dart';
 
+import '../../welcome_screen/welcome_screen.dart';
 import '../components/splash_content.dart';
 import '../../../components/default_button.dart';
 
@@ -15,16 +15,20 @@ class _BodyState extends State<Body> {
   int currentPage = 0;
   List<Map<String, String>> splashData = [
     {
-      "text": "Welcome to auto_mentorxX, Let’s shop!",
+      "title": "Discover",
+      "text": "Lorem ipsum dolor sit amet consectetur.\nFeugiat semper magna lacus commodo\n ipsum.",
       "image": "assets/images/car_intro_1.png"
     },
     {
+      "title": "Perfection",
       "text":
-          "We help people conect with store \naround United State of America",
+          "Lorem ipsum dolor sit amet consectetur.\nFeugiat semper magna lacus commodo\n ipsum.",
       "image": "assets/images/into_pic_2.png"
     },
     {
-      "text": "We show the easy way to shop. \nJust stay at home with us",
+      "title": "Make it Last",
+      "text":
+      "Lorem ipsum dolor sit amet consectetur.\nFeugiat semper magna lacus commodo\n ipsum.",
       "image": "assets/images/Starman-bro.png"
     },
   ];
@@ -45,8 +49,10 @@ class _BodyState extends State<Body> {
                 },
                 itemCount: splashData.length,
                 itemBuilder: (context, index) => SplashContent(
-                  image: splashData[index]["image"],
+                  title: splashData[index]['title'],
                   text: splashData[index]['text'],
+                  image: splashData[index]["image"],
+
                 ),
               ),
             ),
@@ -80,7 +86,7 @@ class _BodyState extends State<Body> {
                     DefaultButton(
                       text: "Continue",
                       press: () {
-                        Navigator.pushNamed(context, SignInScreen.routeName);
+                        Navigator.pushNamed(context, WelcomeScreen.routeName);
                       },
                     ),
                     Spacer(),

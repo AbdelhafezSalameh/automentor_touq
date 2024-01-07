@@ -1,10 +1,9 @@
+import 'package:auto_mentorx/screens/categories_pages/parts.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:auto_mentorx/screens/categories_pages/bikes_page.dart';
 import 'package:auto_mentorx/screens/categories_pages/cars_page.dart';
 import 'package:auto_mentorx/screens/categories_pages/classic_page.dart';
-import 'package:auto_mentorx/screens/details/details_screen.dart';
-import 'package:auto_mentorx/screens/profile/profile_screen.dart';
+
 
 import '../../../size_config.dart';
 
@@ -31,11 +30,11 @@ class Categories extends StatelessWidget {
               if (categories[index]["text"] == 'Cars') {
                 Navigator.pushNamed(context, CarsPage.routeName);
               } else if (categories[index]["text"] == 'Bikes') {
-                Navigator.pushNamed(context, MotorcyclesPage.routeName);
+                Navigator.pushNamed(context, BikesPage.routeName);
               } else if (categories[index]["text"] == 'Classic\nCars') {
                 Navigator.pushNamed(context, ClassicCarsPage.routeName);
               } else if (categories[index]["text"] == 'Parts') {
-                Navigator.pushNamed(context, ProfileScreen.routeName);
+                Navigator.pushNamed(context, PartsPage.routeName);
               }
             },
           ),
@@ -65,14 +64,14 @@ class CategoryCard extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.all(getProportionateScreenWidth(15)),
+              padding: EdgeInsets.all(getProportionateScreenWidth(10)),
               height: getProportionateScreenWidth(55),
               width: getProportionateScreenWidth(55),
               decoration: BoxDecoration(
-                color: Color(0xFFFFA94A),
+                color: Color(0xFFe87121),
                 borderRadius: BorderRadius.circular(10),
               ),
-              child: SvgPicture.asset(icon!),
+              child: Image.asset(icon!,fit: BoxFit.contain,),
             ),
             SizedBox(height: 5),
             Text(text!, textAlign: TextAlign.center)

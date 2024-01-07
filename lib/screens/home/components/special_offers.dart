@@ -68,8 +68,8 @@ class SpecialOfferCard extends StatelessWidget {
       child: GestureDetector(
         onTap: press,
         child: SizedBox(
-          width: getProportionateScreenWidth(242),
-          height: getProportionateScreenWidth(100),
+          width: getProportionateScreenWidth(200),
+          height: getProportionateScreenWidth(125),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Stack(
@@ -104,6 +104,7 @@ class SpecialOfferCard extends StatelessWidget {
                           style: TextStyle(
                             fontSize: getProportionateScreenWidth(13),
                             fontWeight: FontWeight.bold,
+
                           ),
                         ),
                         //TextSpan(text: "$numOfBrands Brands")
