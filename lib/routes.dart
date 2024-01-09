@@ -1,7 +1,7 @@
 
-
 import 'package:auto_mentorx/manual_details/car_detail_manual_screen.dart';
 import 'package:auto_mentorx/screens/categories_pages/parts.dart';
+import 'package:auto_mentorx/screens/edit_profile/edit_profile.dart';
 import 'package:auto_mentorx/screens/favourite_screen/fav_items.dart';
 import 'package:auto_mentorx/screens/news/news_page.dart';
 import 'package:auto_mentorx/screens/welcome_screen/welcome_screen.dart';
@@ -44,5 +44,6 @@ final Map<String, WidgetBuilder> routes = {
   CarDetailScreen.routeName:(context) => CarDetailScreen(),
   ClassicCarsPage.routeName:(context) => ClassicCarsPage(),
   FavItems.routeName:(context)=>FavItems(),
-  CustomBottomNavBar.routName:(context) => CustomBottomNavBar()
+  CustomBottomNavBar.routName:(context) => CustomBottomNavBar(),
+  EditProfile.routeName:(context) => EditProfile()
 };

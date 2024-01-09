@@ -1,13 +1,55 @@
+import 'package:auto_mentorx/models/cardnews.dart';
+import 'package:auto_mentorx/screens/news/components/news_card_skelton.dart';
+import 'package:auto_mentorx/screens/news/components/web_view_container.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../../size_config.dart';
 import 'section_title.dart';
 
-class SpecialOffers extends StatelessWidget {
+class SpecialOffers extends StatefulWidget {
   const SpecialOffers({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
+  @override
+  State<SpecialOffers> createState() => _SpecialOffersState();
+}
+
+class _SpecialOffersState extends State<SpecialOffers> {
+  late final WebViewController controller;
+  void initStatee(){
+    super.initState();
+    controller = WebViewController()
+    ..loadRequest(Uri.parse('https://www.caranddriver.com/news/a45596995/mazda-cx-70-release-date/'));
+  }
+  
+  @override
+  void initState() {
+    getData();
+    super.initState();
+  }
+  List<NewsCard> newsCard = [];
+  Dio dio = Dio();
+  void getData()async{
+    final response =await dio.get('http://10.7.3.46:8080/get-data');
+
+    List fetchData = response.data;
+    fetchData.forEach((element) {
+      newsCard.add(NewsCard(
+          title: element['title'].toString(),
+          desc: element['description'].toString(),
+          path: element['path'].toString(),
+          newsUrl: element['newsUrl']
+      ));
+    });
+    newsCard.forEach((element) {
+
+      print(element.title);
+      setState(() {});
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,23 +66,18 @@ class SpecialOffers extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: [
-              SpecialOfferCard(
-                image: "assets/images/image-banner-audi.jpg",
+            children: List.generate(2, (index) {
+                return newsCard.isEmpty? SizedBox()
+                  :SpecialOfferCard(
+                image: newsCard[index].path,
                 category:
-                    "Audi sends off iconic TT with final edition roadster",
+                newsCard[index].title??'',
                 numOfBrands: 18,
-                press: () {},
-              ),
-              SpecialOfferCard(
-                image: "assets/images/image-banner-nsx.jpg",
-                category:
-                    "2024 Acura TLX gets feature enhancements, new grille",
-                numOfBrands: 24,
-                press: () {},
-              ),
-              SizedBox(width: getProportionateScreenWidth(20)),
-            ],
+                press: () {
+                  Navigator.push(context, MaterialPageRoute(builder:(context)=>WebViewContainer(newsLink: newsCard[index].newsUrl,)));
+                },
+              );
+            }),
           ),
         ),
       ],
@@ -64,19 +101,19 @@ class SpecialOfferCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: getProportionateScreenWidth(20)),
+      padding: EdgeInsets.only(left: getProportionateScreenWidth(20),right: getProportionateScreenWidth(20)),
       child: GestureDetector(
         onTap: press,
         child: SizedBox(
-          width: getProportionateScreenWidth(200),
-          height: getProportionateScreenWidth(125),
+          width: getProportionateScreenWidth(230),
+          height: getProportionateScreenWidth(115),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20),
             child: Stack(
               children: [
-                Image.asset(
+                Image.network(
                   image,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.contain,
                 ),
                 Container(
                   decoration: BoxDecoration(

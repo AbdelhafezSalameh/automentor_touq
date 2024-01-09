@@ -1,3 +1,6 @@
+import 'package:auto_mentorx/screens/sign_in/sign_in_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_mentorx/components/custom_surfix_icon.dart';
 import 'package:auto_mentorx/components/default_button.dart';
@@ -8,6 +11,12 @@ import '../../../constants.dart';
 import '../../../size_config.dart';
 
 class CompleteProfileForm extends StatefulWidget {
+  final String email;
+  final String password;
+
+  const CompleteProfileForm(
+      {super.key, required this.email, required this.password});
+
   @override
   _CompleteProfileFormState createState() => _CompleteProfileFormState();
 }
@@ -15,10 +24,13 @@ class CompleteProfileForm extends StatefulWidget {
 class _CompleteProfileFormState extends State<CompleteProfileForm> {
   final _formKey = GlobalKey<FormState>();
   final List<String?> errors = [];
-  String? firstName;
-  String? lastName;
-  String? phoneNumber;
-  String? address;
+
+  final _auth = FirebaseAuth.instance;
+  final _firestore = FirebaseFirestore.instance;
+  final TextEditingController _controllerFirstName = TextEditingController();
+  final TextEditingController _controllerLastName = TextEditingController();
+  final TextEditingController _controllerPhoneNumber = TextEditingController();
+  final TextEditingController _controllerAddress = TextEditingController();
 
   void addError({String? error}) {
     if (!errors.contains(error))
@@ -52,9 +64,25 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           DefaultButton(
             text: "continue",
             press: () {
-              if (_formKey.currentState!.validate()) {
-                Navigator.pushNamed(context, OtpScreen.routeName);
-              }
+              try {
+                if (_formKey.currentState!.validate()) {
+                  _auth.createUserWithEmailAndPassword(
+                      email: widget.email, password: widget.password);
+                  _firestore.collection('User').add(
+                    {
+                      'Email':widget.email,
+                      'Password':widget.password,
+                      'PhoneNumber': _controllerPhoneNumber.text,
+                      'userName': '${_controllerFirstName.text} ${_controllerLastName.text}',
+                      'address':_controllerAddress.text,
+                      'imgUrl': ''
+                    }
+                  );
+                  if (mounted) {
+                    Navigator.pushNamedAndRemoveUntil(context, SignInScreen.routeName, (route) => false);
+                  }
+                }
+              } catch (e) {}
             },
           ),
         ],
@@ -64,7 +92,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
   TextFormField buildAddressFormField() {
     return TextFormField(
-      onSaved: (newValue) => address = newValue,
+      controller: _controllerAddress,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kAddressNullError);
@@ -92,8 +120,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
   TextFormField buildPhoneNumberFormField() {
     return TextFormField(
+      controller: _controllerPhoneNumber,
       keyboardType: TextInputType.phone,
-      onSaved: (newValue) => phoneNumber = newValue,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kPhoneNumberNullError);
@@ -120,7 +148,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
   TextFormField buildLastNameFormField() {
     return TextFormField(
-      onSaved: (newValue) => lastName = newValue,
+      controller: _controllerLastName,
       decoration: InputDecoration(
         labelText: "Last Name",
         hintText: "Enter your last name",
@@ -134,7 +162,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
   TextFormField buildFirstNameFormField() {
     return TextFormField(
-      onSaved: (newValue) => firstName = newValue,
+      controller: _controllerFirstName,
       onChanged: (value) {
         if (value.isNotEmpty) {
           removeError(error: kNamelNullError);

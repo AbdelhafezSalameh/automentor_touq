@@ -1,5 +1,5 @@
-
 import 'package:auto_mentorx/screens/news/components/test.dart';
+import 'package:auto_mentorx/screens/news/components/web_view_container.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import '../../../models/cardnews.dart';
@@ -8,8 +8,6 @@ import 'news_card_skelton.dart';
 import 'news_header.dart';
 import 'news_slider.dart';
 import 'news_widget.dart';
-
-
 
 class NewsBody extends StatefulWidget {
   const NewsBody({super.key});
@@ -34,16 +32,16 @@ class _NewsBodyState extends State<NewsBody> {
   }
 
   Future<void> getData() async {
-
-    var response = await dio.get(
-        'http://10.7.3.45:8080/get-data');
+    final response =await dio.get('http://10.7.3.46:8080/get-data');
 
     List fetchData = response.data;
     fetchData.forEach((element) {
       newsCard.add(NewsCard(
           title: element['title'].toString(),
           desc: element['description'].toString(),
-          path: element['path'].toString()));
+          path: element['path'].toString(),
+          newsUrl: element['newsUrl']
+      ));
     });
     newsCard.forEach((element) {
 
@@ -56,18 +54,21 @@ class _NewsBodyState extends State<NewsBody> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              TextButton(onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => TestScreen(),));
-        },
+              TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => TestScreen(),
+                        ));
+                  },
                   child: Text('Press')),
               SizedBox(height: getProportionateScreenHeight(20)),
               const NewsHeader(),
@@ -80,7 +81,7 @@ class _NewsBodyState extends State<NewsBody> {
                     Text(
                       'Automotive News',
                       style:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -95,7 +96,7 @@ class _NewsBodyState extends State<NewsBody> {
                     Text(
                       'Latest News',
                       style:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
@@ -103,26 +104,31 @@ class _NewsBodyState extends State<NewsBody> {
               SizedBox(height: getProportionateScreenWidth(15)),
               isDataFetched
                   ? SizedBox(
-                width: double.infinity,
-                height: MediaQuery
-                    .of(context)
-                    .size
-                    .height * 0.5,
-                child: ListView.builder(
-                  controller: ScrollController(),
-                  itemCount: isLoadingMore ? newsCard.length +1: newsCard.length,
-                  itemBuilder: (context, index) {
-                    if(index< newsCard.length){
-                          final title = newsCard[index].title;
-                          final desc= newsCard[index].desc;
-                         final  path = newsCard[index].path;
-                         return NewsWidget(title: title, desc: desc, path: path);
-                    }else{
-                      return Center(child: CircularProgressIndicator(),);
-                    }
-                  },
-                ),
-              )
+                      width: double.infinity,
+                      height: MediaQuery.of(context).size.height * 0.5,
+                      child: ListView.builder(
+                        controller: ScrollController(),
+                        itemCount: isLoadingMore
+                            ? newsCard.length + 1
+                            : newsCard.length,
+                        itemBuilder: (context, index) {
+                          if (index < newsCard.length) {
+                            final title = newsCard[index].title;
+                            final desc = newsCard[index].desc;
+                            final path = newsCard[index].path;
+                            return NewsWidget(
+                                title: title, desc: desc, path: path, callback: () {
+                              Navigator.push(context, MaterialPageRoute(builder:(context)=>WebViewContainer(newsLink: newsCard[index].newsUrl,)));
+
+                            },);
+                          } else {
+                            return Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                        },
+                      ),
+                    )
                   : const NewsCardSkelton(),
             ],
           ),
@@ -131,21 +137,20 @@ class _NewsBodyState extends State<NewsBody> {
     );
   }
 
-  void _scrollListener() async{
-    if(isLoadingMore) return;
+  void _scrollListener() async {
+    if (isLoadingMore) return;
     if (scrollController.position.pixels ==
         scrollController.position.maxScrollExtent) {
       setState(() {
         isLoadingMore = true;
         print('end of screen');
       });
-      page=page+1;
+      page = page + 1;
       await newsCard;
       setState(() {
         isLoadingMore = false;
         print('aekjgakjbdfsv');
       });
     }
-
   }
 }

@@ -1,3 +1,4 @@
+import 'package:auto_mentorx/screens/sign_in/sign_in_screen.dart';
 import 'package:auto_mentorx/screens/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_mentorx/components/default_button.dart';
@@ -66,7 +67,9 @@ class Body extends StatelessWidget {
                   top: 120,
                   left: 125,
                   child: InkWell(onTap: (){
-                    Navigator.pushNamed(context,  CustomBottomNavBar.routName);
+                    Navigator.pushNamed(context,  CustomBottomNavBar.routName,arguments: {
+                      'type':'guest'
+                    });
                   },
                     child: RichText(
                       text: TextSpan(
@@ -86,6 +89,12 @@ class Body extends StatelessWidget {
                       ),
                     ),
                   ),
+                ),
+                MaterialButton(
+                    onPressed: (){
+                      Navigator.pushNamed(context, SignInScreen.routeName,);
+                    },
+                  child: Text('Login'),
                 ),
               ],
             ),
