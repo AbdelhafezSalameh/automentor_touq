@@ -27,7 +27,7 @@ class Body extends StatelessWidget {
             ),
             SizedBox(height: 20,),
             Padding(
-              padding: const EdgeInsets.only(left: 40,right: 40,top: 40),
+              padding: const EdgeInsets.only(left: 40,right: 40,top: 20),
               child: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
@@ -46,11 +46,11 @@ class Body extends StatelessWidget {
                 Container(
                   color: Colors.white,
                   width: SizeConfig.screenWidth,
-                  height: SizeConfig.screenHeight*0.22
+                  height: SizeConfig.screenHeight*0.24
                 ),
                 Positioned(
                   left: 80,
-                  top: 50,
+                  top: 10,
                   child: SizedBox(
                     width: SizeConfig.screenWidth * 0.6,
                     child: DefaultButton(
@@ -59,12 +59,25 @@ class Body extends StatelessWidget {
                         Navigator.pushNamed(context, SignUpScreen.routeName);
                       },
                     ),
-      
                   ),
-      
+
                 ),
                 Positioned(
-                  top: 120,
+                  left: 80,
+                  top: 85,
+                  child: SizedBox(
+                    width: SizeConfig.screenWidth * 0.6,
+                    child: DefaultButton(
+                      text: "Sign In",
+                      press: () {
+                        Navigator.pushNamed(context, SignInScreen.routeName);
+                      },
+                    ),
+                  ),
+
+                ),
+                Positioned(
+                  top: 160,
                   left: 125,
                   child: InkWell(onTap: (){
                     Navigator.pushNamed(context,  CustomBottomNavBar.routName,arguments: {
@@ -90,12 +103,12 @@ class Body extends StatelessWidget {
                     ),
                   ),
                 ),
-                MaterialButton(
-                    onPressed: (){
-                      Navigator.pushNamed(context, SignInScreen.routeName,);
-                    },
-                  child: Text('Login'),
-                ),
+                // MaterialButton(
+                //     onPressed: (){
+                //       Navigator.pushNamed(context, SignInScreen.routeName,);
+                //     },
+                //   child: Text('Login'),
+                // ),
               ],
             ),
           ],

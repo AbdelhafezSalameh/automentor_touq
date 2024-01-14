@@ -62,12 +62,10 @@ class _BodyState extends State<Body> {
       body: [
         HomeScreen(),
         const FavItems(),
-        Container(
-          child: Center(
-            child: Text('Chat Screen'),
-          ),
+        const Center(
+          child: Text('Chat Screen'),
         ),
-        ProfileScreen()
+        const ProfileScreen()
       ][currentPageIndex],
     );
   }

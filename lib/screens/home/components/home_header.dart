@@ -1,3 +1,4 @@
+import 'package:auto_mentorx/screens/home/components/notification.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_mentorx/screens/cart/cart_screen.dart';
 
@@ -26,7 +27,9 @@ class HomeHeader extends StatelessWidget {
           IconBtnWithCounter(
             svgSrc: "assets/icons/Bell.svg",
             numOfitem: 3,
-            press: () {},
+            press: () {
+              // Navigator.pushNamed(context, NotificationScreen.routeName);
+            },
           ),
         ],
       ),

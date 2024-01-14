@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../../size_config.dart';
+import '../../news/news_page.dart';
 import 'section_title.dart';
 
 class SpecialOffers extends StatefulWidget {
@@ -57,10 +58,26 @@ class _SpecialOffersState extends State<SpecialOffers> {
         Padding(
           padding:
               EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-          child: SectionTitle(
-            title: "Automotive News",
-            press: () {},
-          ),
+          child:Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Automotive News',
+                style: TextStyle(
+                  fontSize: getProportionateScreenWidth(18),
+                  color: Colors.black,
+                ),
+              ),
+              GestureDetector(
+                onTap: (){
+                  Navigator.pushNamed(context, NewsScreen.routeName);
+                },
+                child: Text(
+                  "See More",
+                  style: TextStyle(color: Color(0xFFBBBBBB)),
+                ),
+              ),
+            ],
+          )
         ),
         SizedBox(height: getProportionateScreenWidth(20)),
         SingleChildScrollView(

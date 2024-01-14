@@ -1,4 +1,3 @@
-import 'package:auto_mentorx/screens/home/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_mentorx/components/custom_surfix_icon.dart';
@@ -35,10 +34,11 @@ class _SignFormState extends State<SignForm> {
   }
 
   void removeError({String? error}) {
-    if (errors.contains(error))
+    if (errors.contains(error)) {
       setState(() {
         errors.remove(error);
       });
+    }
   }
 
   @override
@@ -62,12 +62,12 @@ class _SignFormState extends State<SignForm> {
                   });
                 },
               ),
-              Text("Remember me"),
-              Spacer(),
+              const Text("Remember me"),
+              const Spacer(),
               GestureDetector(
                 onTap: () => Navigator.pushNamed(
                     context, ForgotPasswordScreen.routeName),
-                child: Text(
+                child: const Text(
                   "Forgot Password",
                   style: TextStyle(decoration: TextDecoration.underline),
                 ),
@@ -92,9 +92,19 @@ class _SignFormState extends State<SignForm> {
                   }
                 } catch(e ){
                   if(e is FirebaseAuthException){
-                    if(e.code.contains('invalid-credential'));
-                    AlertDialog(
-                      title: Text('Invalid Login'),);
+                    if(e.code.contains('invalid-credential')) {}
+                    showDialog(context: context,
+                        builder: (BuildContext context){
+                      return AlertDialog(
+                        title: const Text('Wrong Email or Password'),
+                        actions: [
+                          TextButton(onPressed: (){
+                            Navigator.pop(context);
+                          },
+                              child: const Text('OK'))
+                        ],
+                      );
+                        });
                   }
 
                 }
@@ -123,7 +133,7 @@ class _SignFormState extends State<SignForm> {
         }
         return null;
       },
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         labelText: "Password",
         hintText: "Enter your password",
         // If  you are using latest version of flutter then lable text and hint text shown like this
@@ -148,7 +158,7 @@ class _SignFormState extends State<SignForm> {
         }
         return null;
       },
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         labelText: "Email",
         hintText: "Enter your email",
         // If  you are using latest version of flutter then lable text and hint text shown like this

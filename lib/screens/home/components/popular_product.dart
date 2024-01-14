@@ -1,3 +1,4 @@
+import 'package:auto_mentorx/screens/categories_pages/parts.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_mentorx/components/product_card.dart';
 import 'package:auto_mentorx/models/Product.dart';
@@ -30,7 +31,27 @@ class _PopularProductsState extends State<PopularProducts> {
         Padding(
           padding:
               EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(20)),
-          child: SectionTitle(title: "Newly Listed Parts", press: () {}),
+          child:
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Newly Listed Parts',
+                style: TextStyle(
+                  fontSize: getProportionateScreenWidth(18),
+                  color: Colors.black,
+                ),
+              ),
+              GestureDetector(
+                onTap: (){
+                  Navigator.pushNamed(context, PartsPage.routeName);
+                },
+                child: Text(
+                  "See More",
+                  style: TextStyle(color: Color(0xFFBBBBBB)),
+                ),
+              ),
+            ],
+          )
         ),
         SizedBox(height: getProportionateScreenWidth(20)),
         SingleChildScrollView(
