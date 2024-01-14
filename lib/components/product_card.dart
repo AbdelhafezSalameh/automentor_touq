@@ -22,6 +22,7 @@ class ProductCard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<ProductCard> {
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -51,7 +52,7 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height:10,),
               Text(
                 widget.product.title,
                 style: TextStyle(color: Colors.black),

@@ -26,6 +26,8 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, String> dataRoute =
+        ModalRoute.of(context)!.settings.arguments as Map<String, String>;
     return Scaffold(
       bottomNavigationBar: Container(
         height: getProportionateScreenHeight(55),
@@ -56,13 +58,16 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                       currentPageIndex == 2 ? kPrimaryColor : inActiveIconColor,
                 ),
                 label: ''),
-            BottomNavigationBarItem(
-                icon: SvgPicture.asset(
-                  "assets/icons/User Icon.svg",
-                  color:
-                      currentPageIndex == 3 ? kPrimaryColor : inActiveIconColor,
-                ),
-                label: ''),
+            if (!dataRoute['type']!.contains('guest')) ...[
+              BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    "assets/icons/User Icon.svg",
+                    color: currentPageIndex == 3
+                        ? kPrimaryColor
+                        : inActiveIconColor,
+                  ),
+                  label: '')
+            ],
           ],
           currentIndex: currentPageIndex,
           onTap: (value) {
@@ -76,7 +81,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
         HomeScreen(),
         const FavItems(),
         ChatScreen(),
-        ProfileScreen()
+        if (!dataRoute['type']!.contains('guest')) ...[ProfileScreen()]
       ][currentPageIndex],
     );
   }

@@ -44,7 +44,7 @@ class CarsPage extends StatelessWidget {
           padding: const EdgeInsets.only(top: 70),
           child: Center(
             child: Container(
-              height: getProportionateScreenHeight(690),
+              height: getProportionateScreenHeight(680),
               width: getProportionateScreenWidth(350),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(40),
@@ -52,8 +52,8 @@ class CarsPage extends StatelessWidget {
               child: GridView.builder(
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
-                      crossAxisSpacing: 50.0,
-                      mainAxisSpacing: 40.0),
+                      crossAxisSpacing: 40.0,
+                      mainAxisSpacing: 30.0),
                   itemCount: carImages.length,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
@@ -77,10 +77,10 @@ class CarsPage extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           //color: Colors.white,
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(25),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.all(25),
+                          padding: const EdgeInsets.all(30),
                           child: Image.asset(carImages[index]),
                         ),
                       ),
@@ -88,9 +88,10 @@ class CarsPage extends StatelessWidget {
                   }),
             ),
           ),
-        )
+        ),
       ],
-    ));
+    )
+    );
   }
 }
 
@@ -109,7 +110,9 @@ class LogoDetailScreen extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-            'Details for $logoName Cars'), // Customize the details based on the logo
+            'Currently There\'s No Manuals   \n for  $logoName Cars',
+        textAlign: TextAlign.center,
+        ), // Customize the details based on the logo
       ),
     );
   }
@@ -124,9 +127,9 @@ class LogoDetailScreen extends StatelessWidget {
       case 4:
         return 'VolksWagen';
       case 5:
-        return 'Kia';
+        return 'Tesla';
       case 6:
-        return 'Huyndai';
+        return 'Lexus';
       default:
         return 'Unknown';
     }
@@ -138,7 +141,7 @@ List<String> carImages = [
   'assets/images/car_logos/bmw-logo.png',
   'assets/images/car_logos/Land_Rover_logo.png',
   'assets/images/car_logos/Mercedes-Logo.svg.png',
-  'assets/images/car_logos/folkslogo.png',
-  'assets/images/car_logos/kia.jpg',
-  'assets/images/car_logos/huyndai-logo.png'
+  'assets/images/car_logos/volkswagen-new-.png',
+  'assets/images/car_logos/tesla.png',
+  'assets/images/car_logos/lexus2.png'
 ];

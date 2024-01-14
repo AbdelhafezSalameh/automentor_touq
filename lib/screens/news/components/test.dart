@@ -14,7 +14,7 @@ class _TestScreenState extends State<TestScreen> {
   final scrollController = ScrollController();
   List posts = [];
   int page = 1;
-  bool isLoadingMore =false;
+  bool isLoadingMore = false;
 
   @override
   void initState() {
@@ -30,9 +30,9 @@ class _TestScreenState extends State<TestScreen> {
       body: ListView.builder(
           padding: EdgeInsets.all(12),
           controller: scrollController,
-          itemCount: isLoadingMore ?posts.length+1 :posts.length,
+          itemCount: isLoadingMore ? posts.length + 1 : posts.length,
           itemBuilder: (context, index) {
-            if(index < posts.length) {
+            if (index < posts.length) {
               final post = posts[index];
               final title = post['title']['rendered'];
               final description = post['excerpt']['rendered'];
@@ -50,8 +50,10 @@ class _TestScreenState extends State<TestScreen> {
                   ),
                 ),
               );
-            }else{
-              return Center(child: CircularProgressIndicator(),);
+            } else {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
             }
           }),
     );
@@ -65,26 +67,25 @@ class _TestScreenState extends State<TestScreen> {
     if (response.statusCode == 200) {
       final json = jsonDecode(response.body) as List;
       setState(() {
-        posts = posts +json;
+        posts = posts + json;
       });
     } else {
       print('Ueererrrr');
     }
   }
 
-  void _scrollListener() async{
-    if(isLoadingMore) return;
+  void _scrollListener() async {
+    if (isLoadingMore) return;
     if (scrollController.position.pixels ==
         scrollController.position.maxScrollExtent) {
       setState(() {
         isLoadingMore = true;
       });
-      page=page+1;
+      page = page + 1;
       await fetchPosts();
       setState(() {
         isLoadingMore = false;
       });
     }
-
   }
 }
