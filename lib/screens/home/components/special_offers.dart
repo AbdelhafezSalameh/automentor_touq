@@ -34,7 +34,7 @@ class _SpecialOffersState extends State<SpecialOffers> {
   List<NewsCard> newsCard = [];
   Dio dio = Dio();
   void getData()async{
-    final response =await dio.get('http://10.7.3.46:8080/get-data');
+    final response =await dio.get('http://192.168.1.8:8080/get-data');
 
     List fetchData = response.data;
     fetchData.forEach((element) {
@@ -47,7 +47,7 @@ class _SpecialOffersState extends State<SpecialOffers> {
     });
     newsCard.forEach((element) {
 
-      print(element.title);
+      // print('================${element.path}======================');
       setState(() {});
     });
   }
@@ -117,6 +117,7 @@ class SpecialOfferCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(image);
     return Padding(
       padding: EdgeInsets.only(left: getProportionateScreenWidth(20),right: getProportionateScreenWidth(20)),
       child: GestureDetector(

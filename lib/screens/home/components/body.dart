@@ -59,14 +59,7 @@ class _BodyState extends State<Body> {
           },
         ),
       ),
-      body: [
-        HomeScreen(),
-        const FavItems(),
-        const Center(
-          child: Text('Chat Screen'),
-        ),
-        const ProfileScreen()
-      ][currentPageIndex],
+      body: SizedBox(),
     );
   }
 }
