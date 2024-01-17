@@ -32,7 +32,7 @@ class _NewsBodyState extends State<NewsBody> {
   }
 
   Future<void> getData() async {
-    final response =await dio.get('http://10.7.3.46:8080/get-data');
+    final response =await dio.get('http://192.168.1.8:8080/get-data');
 
     List fetchData = response.data;
     fetchData.forEach((element) {
@@ -45,7 +45,7 @@ class _NewsBodyState extends State<NewsBody> {
     });
     newsCard.forEach((element) {
 
-      print(element.title);
+      print(element.path);
       setState(() {});
     });
 
