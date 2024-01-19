@@ -84,7 +84,7 @@ class _SignFormState extends State<SignForm> {
                 try{
                  await _auth.signInWithEmailAndPassword(email: _controllerEmail.text, password: _controllerPassword.text);
                   if(mounted) {
-                    Navigator.pushNamed(context, CustomBottomNavBar.routName,arguments: {
+                    Navigator.pushReplacementNamed(context, CustomBottomNavBar.routName,arguments: {
                     'type' :'',
                       'email':_controllerEmail.text,
                       'password':_controllerPassword.text

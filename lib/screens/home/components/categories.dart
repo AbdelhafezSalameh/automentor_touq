@@ -8,6 +8,8 @@ import 'package:auto_mentorx/screens/categories_pages/classic_page.dart';
 import '../../../size_config.dart';
 
 class Categories extends StatelessWidget {
+  const Categories({super.key});
+
   @override
   Widget build(BuildContext context) {
     List<Map<String, dynamic>> categories = [
@@ -46,11 +48,11 @@ class Categories extends StatelessWidget {
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({
-    Key? key,
+    super.key,
     required this.icon,
     required this.text,
     required this.press,
-  }) : super(key: key);
+  });
 
   final String? icon, text;
   final GestureTapCallback press;
@@ -68,12 +70,12 @@ class CategoryCard extends StatelessWidget {
               height: getProportionateScreenWidth(55),
               width: getProportionateScreenWidth(55),
               decoration: BoxDecoration(
-                color: Color(0xFFe87121),
+                color: const Color(0xFFe87121),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Image.asset(icon!,fit: BoxFit.contain,),
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             Text(text!, textAlign: TextAlign.center)
           ],
         ),

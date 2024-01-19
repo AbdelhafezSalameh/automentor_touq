@@ -1,3 +1,4 @@
+import 'package:auto_mentorx/components/default_button.dart';
 import 'package:auto_mentorx/size_config.dart';
 import 'package:flutter/material.dart';
 
@@ -51,25 +52,31 @@ class _BodyState extends State<Body> {
                     ),
                   ),
                   SizedBox(height: 40,),
-                  Text(
-                    bmwdata['description'],
-                  ),
-                  SizedBox(height: 15,),
                   Row(
                     mainAxisAlignment:MainAxisAlignment.start,
                     children: [
                       InkWell(
                         onTap: (){},
                         child: Text('What\s Covered ?',style:
-                          TextStyle(
+                        TextStyle(
                             color: Color(0xffc94335),
                             fontSize: 15,
                             fontWeight: FontWeight.bold
-                          )
+                        )
                           ,),
                       ),
                     ],
+                  ),
+                  SizedBox(height: 15,),
+                  Text(
+                    bmwdata['description'],
+                  ),
+                  SizedBox(height: 80,),
+                  DefaultButton(
+                    text: 'Add To Cart',
+                    press: (){},
                   )
+
                 ],
               ),
             ),

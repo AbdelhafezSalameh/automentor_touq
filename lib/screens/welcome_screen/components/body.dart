@@ -25,14 +25,14 @@ class Body extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
-            SizedBox(height: 20,),
+            SizedBox(
+              height: 20,
+            ),
             Padding(
-              padding: const EdgeInsets.only(left: 40,right: 40,top: 20),
+              padding: const EdgeInsets.only(left: 40, right: 40, top: 20),
               child: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.white
-                ),
+                decoration:
+                    BoxDecoration(shape: BoxShape.circle, color: Colors.white),
                 child: Image.asset(
                   "assets/images/AutoMentorX-logo.png",
                   height: SizeConfig.screenHeight * 0.35,
@@ -40,14 +40,17 @@ class Body extends StatelessWidget {
               ),
             ),
             //SizedBox(height: SizeConfig.screenHeight * 0.08),
-            Container(child: Image.asset('assets/images/clouds.png',),),
+            Container(
+              child: Image.asset(
+                'assets/images/clouds.png',
+              ),
+            ),
             Stack(
               children: [
                 Container(
-                  color: Colors.white,
-                  width: SizeConfig.screenWidth,
-                  height: SizeConfig.screenHeight*0.24
-                ),
+                    color: Colors.white,
+                    width: SizeConfig.screenWidth,
+                    height: SizeConfig.screenHeight * 0.24),
                 Positioned(
                   left: 80,
                   top: 10,
@@ -60,7 +63,6 @@ class Body extends StatelessWidget {
                       },
                     ),
                   ),
-
                 ),
                 Positioned(
                   left: 80,
@@ -74,41 +76,31 @@ class Body extends StatelessWidget {
                       },
                     ),
                   ),
-
                 ),
                 Positioned(
                   top: 160,
                   left: 125,
-                  child: InkWell(onTap: (){
-                    Navigator.pushNamed(context,  CustomBottomNavBar.routName,arguments: {
-                      'type':'guest'
-                    });
-                  },
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pushNamed(context, CustomBottomNavBar.routName,
+                          arguments: {'type': 'guest'});
+                    },
                     child: RichText(
                       text: TextSpan(
                         text: 'CONTINUE AS A ',
-                        style: TextStyle(
-                            color: Colors.grey[400]
-                        ),
-                        children: [
+                        style: TextStyle(color: Colors.grey[400]),
+                        children: const [
                           TextSpan(
                               text: 'GUEST',
                               style: TextStyle(
                                 decoration: TextDecoration.underline,
                                 color: Color(0xffe87121),
-                              )
-                          )
+                              ))
                         ],
                       ),
                     ),
                   ),
                 ),
-                // MaterialButton(
-                //     onPressed: (){
-                //       Navigator.pushNamed(context, SignInScreen.routeName,);
-                //     },
-                //   child: Text('Login'),
-                // ),
               ],
             ),
           ],

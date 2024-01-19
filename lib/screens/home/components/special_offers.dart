@@ -34,7 +34,7 @@ class _SpecialOffersState extends State<SpecialOffers> {
   List<NewsCard> newsCard = [];
   Dio dio = Dio();
   void getData()async{
-    final response =await dio.get('http://10.7.3.46:8080/get-data');
+    final response =await dio.get('http://192.168.43.181:8080/get-data');
 
     List fetchData = response.data;
     fetchData.forEach((element) {

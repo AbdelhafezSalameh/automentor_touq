@@ -11,7 +11,7 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Sign Up"),
+        //title: Text("Sign Up"),
       ),
       body: SafeArea(
         child: SizedBox(
@@ -34,15 +34,15 @@ class SignUpScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      SocalCard(
+                      SocialCard(
                         icon: "assets/icons/google-icon.svg",
                         press: () {},
                       ),
-                      SocalCard(
+                      SocialCard(
                         icon: "assets/icons/facebook-2.svg",
                         press: () {},
                       ),
-                      SocalCard(
+                      SocialCard(
                         icon: "assets/icons/twitter.svg",
                         press: () {},
                       ),
@@ -52,7 +52,13 @@ class SignUpScreen extends StatelessWidget {
                   Text(
                     'By continuing your confirm that you agree \nwith our Term and Condition',
                     textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.caption,
+                    style:TextStyle(
+                      color: Colors.grey.shade600,
+                      fontSize: 12
+                    ),
+                    // style: Theme.of(context).textTheme.caption,
+
+
                   )
                 ],
               ),

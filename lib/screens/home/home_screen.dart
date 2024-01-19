@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:auto_mentorx/components/coustom_bottom_nav_bar.dart';
-import 'package:auto_mentorx/enums.dart';
 import 'package:auto_mentorx/size_config.dart';
-
-import 'components/body.dart';
 import 'components/categories.dart';
 import 'components/home_header.dart';
 import 'components/popular_product.dart';
@@ -11,6 +7,9 @@ import 'components/special_offers.dart';
 
 class HomeScreen extends StatelessWidget {
   static String routeName = "/home";
+
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -20,18 +19,16 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               SizedBox(height: getProportionateScreenHeight(20)),
-              HomeHeader(),
+              const HomeHeader(),
               SizedBox(height: getProportionateScreenWidth(10)),
               // DiscountBanner(),
               Categories(),
-              PopularProducts(),
+              const PopularProducts(),
 
               SizedBox(height: getProportionateScreenWidth(30)),
-              SpecialOffers(),
+              const SpecialOffers(),
 
               SizedBox(height: getProportionateScreenWidth(30)),
-
-
             ],
           ),
         ),

@@ -5,12 +5,10 @@ import '../../../size_config.dart';
 import '../../favourite_screen/fav_items.dart';
 import '../../profile/profile_screen.dart';
 import '../home_screen.dart';
-import 'categories.dart';
-import 'home_header.dart';
-import 'popular_product.dart';
-import 'special_offers.dart';
 
 class Body extends StatefulWidget {
+  const Body({super.key});
+
   @override
   State<Body> createState() => _BodyState();
 }
