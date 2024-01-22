@@ -42,42 +42,45 @@ class _BodyState extends State<Body> {
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Column(
-                children: [
-                  Text(
-                    bmwdata['text'],
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.black
-                    ),
-                  ),
-                  SizedBox(height: 40,),
-                  Row(
-                    mainAxisAlignment:MainAxisAlignment.start,
-                    children: [
-                      InkWell(
-                        onTap: (){},
-                        child: Text('What\s Covered ?',style:
-                        TextStyle(
-                            color: Color(0xffc94335),
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold
-                        )
-                          ,),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Text(
+                      bmwdata['text'],
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black
                       ),
-                    ],
-                  ),
-                  SizedBox(height: 15,),
-                  Text(
-                    bmwdata['description'],
-                  ),
-                  SizedBox(height: 80,),
-                  DefaultButton(
-                    text: 'Add To Cart',
-                    press: (){},
-                  )
-
-                ],
+                    ),
+                    SizedBox(height: 40,),
+                    Row(
+                      mainAxisAlignment:MainAxisAlignment.start,
+                      children: [
+                        InkWell(
+                          onTap: (){},
+                          child: Text('What\s Covered ?',style:
+                          TextStyle(
+                              color: Color(0xffc94335),
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold
+                          )
+                            ,),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 15,),
+                    Text(
+                      bmwdata['description'],
+                    ),
+                    SizedBox(height: 40,),
+                    DefaultButton(
+                      text: 'Add To Cart',
+                      press: (){},
+                    ),
+                    SizedBox(height: 10,),
+                
+                  ],
+                ),
               ),
             ),
           )

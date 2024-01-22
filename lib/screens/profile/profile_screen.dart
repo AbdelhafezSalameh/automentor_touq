@@ -13,11 +13,14 @@ class ProfileScreen extends StatelessWidget {
     Map dataRoute = ModalRoute.of(context)!.settings.arguments as Map;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           "Profile",
           style: TextStyle(
               fontSize: getProportionateScreenWidth(25),
-              fontWeight: FontWeight.bold),
+              fontWeight: FontWeight.bold,
+            fontFamily: 'Poppins'
+          ),
         ),
       ),
       body: Body(

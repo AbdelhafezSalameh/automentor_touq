@@ -1,4 +1,3 @@
-import 'package:auto_mentorx/screens/home/components/notification.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_mentorx/screens/cart/cart_screen.dart';
 import '../../../size_config.dart';
@@ -18,7 +17,7 @@ class HomeHeader extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const SearchField(),
+           SearchField(),
           IconBtnWithCounter(
             svgSrc: "assets/icons/Cart Icon.svg",
             press: () => Navigator.pushNamed(context, CartScreen.routeName),

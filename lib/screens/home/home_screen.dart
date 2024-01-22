@@ -14,22 +14,31 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: getProportionateScreenHeight(20)),
-              const HomeHeader(),
-              SizedBox(height: getProportionateScreenWidth(10)),
-              // DiscountBanner(),
-              Categories(),
-              const PopularProducts(),
+      body: Container(
+        // height: double.infinity,
+        // decoration: BoxDecoration(
+        //   image: DecorationImage(
+        //     image: AssetImage("assets/images/desktop-wallpaper.jpg"),
+        //     fit: BoxFit.cover,
+        //   ),
+        // ),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(height: getProportionateScreenHeight(20)),
+                const HomeHeader(),
+                SizedBox(height: getProportionateScreenWidth(10)),
+                // DiscountBanner(),
+                Categories(),
+                const PopularProducts(),
 
-              SizedBox(height: getProportionateScreenWidth(30)),
-              const SpecialOffers(),
+                SizedBox(height: getProportionateScreenWidth(30)),
+                const SpecialOffers(),
 
-              SizedBox(height: getProportionateScreenWidth(30)),
-            ],
+                SizedBox(height: getProportionateScreenWidth(30)),
+              ],
+            ),
           ),
         ),
       ),

@@ -61,16 +61,7 @@ class _NewsBodyState extends State<NewsBody> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TestScreen(),
-                        ));
-                  },
-                  child: Text('Press')),
-              SizedBox(height: getProportionateScreenHeight(20)),
+              SizedBox(height: getProportionateScreenHeight(5)),
               const NewsHeader(),
               SizedBox(height: getProportionateScreenWidth(20)),
               const Padding(
@@ -79,7 +70,7 @@ class _NewsBodyState extends State<NewsBody> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      'Automotive News',
+                      'Automotive Ads.',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
@@ -154,3 +145,13 @@ class _NewsBodyState extends State<NewsBody> {
     }
   }
 }
+// TextButton(
+// onPressed: () {
+// Navigator.push(
+// context,
+// MaterialPageRoute(
+// builder: (context) => TestScreen(),
+// ));
+// },
+// child: Text('Press')),
+// SizedBox(height: getProportionateScreenHeight(20)),

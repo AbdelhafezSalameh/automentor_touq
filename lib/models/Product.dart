@@ -90,7 +90,10 @@ List<Product> demoProducts = [
   Product(
     id: 4,
     images: [
-      "assets/images/wireless headset.png",
+      "assets/images/cooler-removebg-preview.png",
+      'assets/images/civic2.jpg',
+      'assets/images/civic1.jpg',
+      'assets/images/civic3.jpg'
     ],
     colors: [
       Color(0xFFF6625E),
@@ -98,10 +101,10 @@ List<Product> demoProducts = [
       Color(0xFFDECB9C),
       Colors.white,
     ],
-    title: "Logitech Head",
-    price: 20.20,
+    title: "GReddy Civic Type R Intercooler Kit(s) - FK8",
+    price: 695.00,
     description: 'description',
-    rating: 4.1,
+    rating: 4.0,
   ),
 ];
 
