@@ -1,5 +1,3 @@
-import 'package:auto_mentorx/api/firebase_api.dart';
-import 'package:auto_mentorx/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_mentorx/routes.dart';
@@ -20,10 +18,12 @@ void main() async {
   );
   // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // await FirebaseApi().initNotifications();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

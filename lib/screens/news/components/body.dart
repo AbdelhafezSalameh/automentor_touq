@@ -45,7 +45,7 @@ class _NewsBodyState extends State<NewsBody> {
     });
     newsCard.forEach((element) {
 
-      print(element.title);
+      print(element.path);
       setState(() {});
     });
 

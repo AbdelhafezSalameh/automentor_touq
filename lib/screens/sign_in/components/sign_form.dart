@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_mentorx/components/custom_surfix_icon.dart';
@@ -24,6 +25,7 @@ class _SignFormState extends State<SignForm> {
   bool? remember = false;
   final List<String?> errors = [];
   final _auth = FirebaseAuth.instance;
+  final _fireStore = FirebaseFirestore.instance;
 
   void addError({String? error}) {
     if (!errors.contains(error)) {
@@ -78,39 +80,60 @@ class _SignFormState extends State<SignForm> {
           SizedBox(height: getProportionateScreenHeight(20)),
           DefaultButton(
             text: "Continue",
-            press: ()async {
+            press: () async {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
-                try{
-                 await _auth.signInWithEmailAndPassword(email: _controllerEmail.text, password: _controllerPassword.text);
-                  if(mounted) {
-                    Navigator.pushReplacementNamed(context, CustomBottomNavBar.routName,arguments: {
-                    'type' :'',
-                      'email':_controllerEmail.text,
-                      'password':_controllerPassword.text
-                  });
-                  }
-                } catch(e ){
-                  if(e is FirebaseAuthException){
-                    if(e.code.contains('invalid-credential')) {}
-                    showDialog(context: context,
-                        builder: (BuildContext context){
-                      return AlertDialog(
-                        title: const Text('Wrong Email or Password'),
-                        actions: [
-                          TextButton(onPressed: (){
-                            Navigator.pop(context);
-                          },
-                              child: const Text('OK'))
-                        ],
-                      );
-                        });
-                  }
 
+                try {
+                  await _auth.signInWithEmailAndPassword(
+                      email: _controllerEmail.text,
+                      password: _controllerPassword.text);
+                    QuerySnapshot<Map<String, dynamic>> data = await _fireStore
+                        .collection('User')
+                        .get();
+                    if (mounted) {
+                      ProfileDetailsModel profileDetailsModel =
+                      ProfileDetailsModel(
+                          id: data.docs.first.id,
+                          email: data.docs.first['Email'],
+                          password: data.docs.first['Password'],
+                          phoneNumber: data.docs.first['PhoneNumber'],
+                          address: data.docs.first['address'],
+                          imageUrl: data.docs.first['imgUrl'],
+                          userName: data.docs.first['userName']);
+                      Navigator.pushNamed(context, CustomBottomNavBar.routName,
+                          arguments: {
+                            'type': '',
+                            'email': _controllerEmail.text,
+                            'password': _controllerPassword.text,
+                            'ProfileDetailsModel': profileDetailsModel
+                          });
+                    }
+
+
+                } catch (e) {
+                  if (e is FirebaseAuthException) {
+                    if (e.code.contains('invalid-credential')) {}
+                    showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Wrong Email or Password'),
+                            actions: [
+                              TextButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  child: const Text('OK'))
+                            ],
+                          );
+                        });
+                  }else{
+                    print(e.toString());
+                  }
                 }
                 // if all are valid then go to success screen
                 KeyboardUtil.hideKeyboard(context);
-
               }
             },
           ),
@@ -168,4 +191,23 @@ class _SignFormState extends State<SignForm> {
       ),
     );
   }
+}
+
+class ProfileDetailsModel {
+  final String id;
+  final String email;
+  final String password;
+  final String phoneNumber;
+  final String address;
+  final String imageUrl;
+  final String userName;
+
+  ProfileDetailsModel(
+      {required this.id,
+      required this.email,
+      required this.password,
+      required this.phoneNumber,
+      required this.address,
+      required this.imageUrl,
+      required this.userName});
 }

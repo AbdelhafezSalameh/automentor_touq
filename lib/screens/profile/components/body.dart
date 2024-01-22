@@ -1,27 +1,22 @@
 import 'package:auto_mentorx/screens/about_us/about_us_screen.dart';
 import 'package:auto_mentorx/screens/edit_profile/edit_profile.dart';
+import 'package:auto_mentorx/screens/sign_in/components/sign_form.dart';
 import 'package:auto_mentorx/screens/sign_in/sign_in_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'profile_menu.dart';
 import 'profile_pic.dart';
 
 class Body extends StatelessWidget {
-  final TextEditingController controllerUserName;
-  final TextEditingController controllerEmail;
-  final TextEditingController controllerPassword;
-  final TextEditingController controllerPhoneNumber;
-  final TextEditingController controllerAddress;
-  final TextEditingController controllerImgUrl;
+  final ProfileDetailsModel profileDetailsModel;
 
-  const Body(
-      {super.key,
-      required this.controllerUserName,
-      required this.controllerEmail,
-      required this.controllerPassword,
-      required this.controllerPhoneNumber,
-      required this.controllerAddress,
-      required this.controllerImgUrl});
+  Body({
+    super.key,
+    required this.profileDetailsModel,
+  });
+
+  final _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +29,10 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "Edit Profile",
             icon: "assets/icons/User Icon.svg",
-            press: () => {Navigator.pushNamed(context, EditProfile.routeName)},
+            press: () => {
+              Navigator.pushNamed(context, EditProfile.routeName,
+                  arguments: {'profileDetailsModel': profileDetailsModel})
+            },
           ),
           ProfileMenu(
             text: "My Orders",
@@ -52,8 +50,9 @@ class Body extends StatelessWidget {
           ProfileMenu(
             text: "Log Out",
             icon: "assets/icons/Log out.svg",
-            press: () {
-              Navigator.pushReplacementNamed(context, SignInScreen.routeName);
+            press: () async {
+              await _auth.signOut();
+              Navigator.pushNamed(context, SignInScreen.routeName);
             },
           ),
         ],

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../enums.dart';
+import '../screens/cart/cart_screen.dart';
 import '../screens/chat_screen/chat_screen.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
@@ -26,8 +27,8 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, String> dataRoute =
-        ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+    Map<String, dynamic> dataRoute =
+        ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
     return Scaffold(
       bottomNavigationBar: Container(
         height: getProportionateScreenHeight(55),
@@ -53,7 +54,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
                 label: ''),
             BottomNavigationBarItem(
                 icon: SvgPicture.asset(
-                  "assets/icons/Chat bubble Icon.svg",
+                  "assets/icons/Cart Icon.svg",
                   color:
                       currentPageIndex == 2 ? kPrimaryColor : inActiveIconColor,
                 ),
@@ -80,8 +81,8 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
       body: [
         HomeScreen(),
         const FavItems(),
-        ChatScreen(),
-        if (!dataRoute['type']!.contains('guest')) ...[ProfileScreen()]
+        const CartScreen(),
+        if (!dataRoute['type']!.contains('guest')) ...[ProfileScreen(profileDetailsModel: dataRoute['ProfileDetailsModel']!,)]
       ][currentPageIndex],
     );
   }

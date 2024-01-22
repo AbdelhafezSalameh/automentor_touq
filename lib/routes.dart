@@ -39,7 +39,6 @@ final Map<String, WidgetBuilder> routes = {
   ClassicCarsPage.routeName: (context) => ClassicCarsPage(),
   DetailsScreen.routeName: (context) => DetailsScreen(),
   CartScreen.routeName: (context) => const CartScreen(),
-  ProfileScreen.routeName: (context) => ProfileScreen(),
    PartsPage.routeName:(context) => PartsPage(),
   NewsScreen.routeName:(context) => NewsScreen(),
   DetailScreen.routeName:(context) => DetailScreen(),
