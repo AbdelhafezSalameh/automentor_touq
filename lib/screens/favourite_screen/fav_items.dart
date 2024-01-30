@@ -36,7 +36,8 @@ class _FavItemsState extends State<FavItems> {
             'Favourite Items',
             style: TextStyle(
                 fontSize: 25,
-                fontFamily: 'Poppins'
+                fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold
             ),
           ),
         ),

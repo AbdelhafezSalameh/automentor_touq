@@ -102,7 +102,7 @@ class AboutUs extends StatelessWidget {
                 children: [
                   Text(
                     'Join Us on the Road Ahead',
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold,color: Color(0xFFE87121)),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold,color: Color(0xFFE87121)),
                   ),
                 ],
               ),

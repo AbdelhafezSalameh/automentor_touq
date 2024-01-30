@@ -107,11 +107,11 @@ class LogoDetailScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('$logoName Classic'),
+        title: Text('$logoName Classic',style: TextStyle(fontSize: 17,fontFamily: 'Poppins'),),
       ),
       body: Center(
         child: Text(
-            'Details for $logoName Classic'), // Customize the details based on the logo
+            'Currently There\'s No Manuals\n for $logoName Cars',textAlign: TextAlign.center,), // Customize the details based on the logo
       ),
     );
   }
@@ -120,16 +120,14 @@ class LogoDetailScreen extends StatelessWidget {
   String getLogoName(int index) {
     switch (index) {
       case 1:
-        return 'Porsche';
-      case 2:
         return 'Cadillac';
-      case 3:
+      case 2:
         return 'Ford';
-      case 4:
+      case 3:
         return 'Pontiac';
-      case 5:
+      case 4:
         return 'Toyota';
-      case 6:
+      case 5:
         return 'Chevrolet';
       default:
         return 'Unknown';

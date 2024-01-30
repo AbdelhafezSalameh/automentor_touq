@@ -113,9 +113,7 @@ class _NewsBodyState extends State<NewsBody> {
 
                             },);
                           } else {
-                            return Center(
-                              child: CircularProgressIndicator(),
-                            );
+                            return SizedBox();
                           }
                         },
                       ),
@@ -140,7 +138,7 @@ class _NewsBodyState extends State<NewsBody> {
       await newsCard;
       setState(() {
         isLoadingMore = false;
-        print('aekjgakjbdfsv');
+        print('=====================');
       });
     }
   }

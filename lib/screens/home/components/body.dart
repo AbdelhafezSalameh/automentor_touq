@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../size_config.dart';
-import '../../favourite_screen/fav_items.dart';
-import '../../profile/profile_screen.dart';
-import '../home_screen.dart';
+
 
 class Body extends StatefulWidget {
   const Body({super.key});
@@ -57,7 +54,7 @@ class _BodyState extends State<Body> {
           },
         ),
       ),
-      body: SizedBox(),
+      body: Container(width: 20,height: 20,color: Colors.red,),
     );
   }
 }

@@ -1,3 +1,4 @@
+
 import 'package:auto_mentorx/size_config.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
@@ -14,14 +15,16 @@ class NewsSlider extends StatefulWidget {
 
 class _NewsSliderState extends State<NewsSlider> {
   final List<Map<String, dynamic>> carouselItems = [
-    {'image': 'assets/images/adds.jpg', 'text': 'Your ADD'},
     {
-      'image': 'assets/images/ads_banner.png',
-      'text': 'You Can Now Add Your Add Here'
+      'image': 'assets/images/auto-repair-add.jpg',
+      'text': ''},
+    {
+      'image': 'assets/images/rent-add.jpg',
+      'text': ''
     },
     {
-      'image': 'assets/images/ads_banner2.png',
-      'text': 'You Can Now Add Your Add Here'
+      'image': 'assets/images/volvo-add.jpg',
+      'text': ''
     },
   ];
 
@@ -43,8 +46,8 @@ class _NewsSliderState extends State<NewsSlider> {
                 children: [
                   Image.asset(
                     item['image'],
-                    height: 240,
-                    width: 320,
+                    height: getProportionateScreenHeight(240),
+                    width: getProportionateScreenWidth(320),
                     fit: BoxFit.cover,
                   ),
                   Positioned(

@@ -89,7 +89,7 @@ class CarWidget extends StatelessWidget {
                           width: 136,
                           height: 136,
                         ),
-                        // SizedBox(height: 10,),
+                         //SizedBox(height: 10,),
                         Text(cars[0].text[itemIndex],
                           style: const TextStyle(
                             //fontSize: 12,

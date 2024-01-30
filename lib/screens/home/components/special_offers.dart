@@ -7,7 +7,6 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../../size_config.dart';
 import '../../news/news_page.dart';
-import 'section_title.dart';
 
 class SpecialOffers extends StatefulWidget {
   const SpecialOffers({
