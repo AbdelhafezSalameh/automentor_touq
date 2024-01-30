@@ -1,3 +1,4 @@
+import 'package:auto_mentorx/screens/about_us/about_us_screen.dart';
 import 'package:auto_mentorx/screens/edit_profile/edit_profile.dart';
 import 'package:auto_mentorx/screens/sign_in/components/sign_form.dart';
 import 'package:auto_mentorx/screens/sign_in/sign_in_screen.dart';
@@ -23,7 +24,7 @@ class Body extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 20),
       child: Column(
         children: [
-          ProfilePic(),
+          ProfilePic(profileDetailsModel: profileDetailsModel,),
           SizedBox(height: 20),
           ProfileMenu(
             text: "Edit Profile",
@@ -38,15 +39,13 @@ class Body extends StatelessWidget {
             icon: "assets/icons/Bell.svg",
             press: () {},
           ),
+
           ProfileMenu(
-            text: "My Address",
-            icon: "assets/icons/Settings.svg",
-            press: () {},
-          ),
-          ProfileMenu(
-            text: "Help Center",
+            text: "About Us",
             icon: "assets/icons/Question mark.svg",
-            press: () {},
+            press: () {
+              Navigator.pushNamed(context, AboutUs.routeName);
+            },
           ),
           ProfileMenu(
             text: "Log Out",

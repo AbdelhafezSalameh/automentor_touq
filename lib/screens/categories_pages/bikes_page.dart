@@ -114,7 +114,7 @@ class LogoDetailScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('$logoName Bikes'),
+        title: Text('$logoName Bikes',style: TextStyle(fontSize: 17,fontFamily: 'Poppins'),),
       ),
       body: Center(
         child: Text(

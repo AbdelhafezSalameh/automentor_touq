@@ -9,7 +9,7 @@ class NewsScreen extends StatelessWidget {
   static String routeName = "/news";
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: NewsBody(),
 
     );

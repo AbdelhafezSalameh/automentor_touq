@@ -83,6 +83,7 @@ class _SignFormState extends State<SignForm> {
             press: () async {
               if (_formKey.currentState!.validate()) {
                 _formKey.currentState!.save();
+
                 try {
                   await _auth.signInWithEmailAndPassword(
                       email: _controllerEmail.text,
@@ -108,6 +109,7 @@ class _SignFormState extends State<SignForm> {
                             'ProfileDetailsModel': profileDetailsModel
                           });
                     }
+
 
                 } catch (e) {
                   if (e is FirebaseAuthException) {

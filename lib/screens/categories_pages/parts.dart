@@ -19,13 +19,16 @@ class PartsPage extends StatelessWidget {
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, // Set the number of columns you want
             crossAxisSpacing: 20.0,
-            mainAxisSpacing: 90.0,
+            mainAxisSpacing: 40.0,
+            mainAxisExtent: 250
           ),
           itemCount: demoProducts.length,
           itemBuilder: (context, index) {
-            return ProductCard(
-              product: demoProducts[index],
-              favourite: index,
+            return SingleChildScrollView(
+              child: ProductCard(
+                product: demoProducts[index],
+                favourite: index,
+              ),
             );
           },
         ),

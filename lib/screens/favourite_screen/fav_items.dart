@@ -30,41 +30,54 @@ class _FavItemsState extends State<FavItems> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fav Items'),
+        title: const Padding(
+          padding: EdgeInsets.all(5.0),
+          child: Text(
+            'Favourite Items',
+            style: TextStyle(
+                fontSize: 25,
+                fontFamily: 'Poppins',
+              fontWeight: FontWeight.bold
+            ),
+          ),
+        ),
         automaticallyImplyLeading: false,
       ),
-      body: Column(
-        children: List.generate(counter.length, (index) {
-          return Column(
-            children: [
-              ListTile(
-                title: Text(demoProducts[counter[index]].title),
-                leading: Image.asset(demoProducts[counter[index]].images[0]),
-                // Assuming images is a list in your ProductModel
-                subtitle: Text(
-                  '${demoProducts[counter[index]].price}',
-                  style: TextStyle(),
-                ),
-                trailing: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      isFav[counter[index]]=false;
-                      counter.remove(index);
-
-                    });
-
-                  },
-                  icon: Icon(
-                    Icons.remove_circle,
-                    color: Colors.red,
-                  ),
-                ),
-              ),
-              Divider()
-            ],
-          );
-        }),
-      ),
+      body: counter.isEmpty
+          ? const Center(
+              child: Text("There's no fav items"),
+            )
+          : Column(
+              children: List.generate(counter.length, (index) {
+                return Column(
+                  children: [
+                    ListTile(
+                      title: Text(demoProducts[counter[index]].title),
+                      leading:
+                          Image.asset(demoProducts[counter[index]].images[0]),
+                      // Assuming images is a list in your ProductModel
+                      subtitle: Text(
+                        '${demoProducts[counter[index]].price}',
+                        style: TextStyle(),
+                      ),
+                      trailing: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            isFav[counter[index]] = false;
+                            counter.remove(index);
+                          });
+                        },
+                        icon: Icon(
+                          Icons.remove_circle,
+                          color: Colors.red,
+                        ),
+                      ),
+                    ),
+                    Divider()
+                  ],
+                );
+              }),
+            ),
     );
   }
 }

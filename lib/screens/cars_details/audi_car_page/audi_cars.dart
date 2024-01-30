@@ -1,4 +1,4 @@
-import 'package:auto_mentorx/manual_details/car_detail_manual_screen.dart';
+import 'package:auto_mentorx/manual_details/detail_manual_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -74,7 +74,7 @@ class CarWidget extends StatelessWidget {
 
               itemBuilder: (BuildContext context,int itemIndex){
                 return GestureDetector(
-                  onTap: () => Navigator.pushNamed(context, CarDetailScreen.routeName,arguments: {
+                  onTap: () => Navigator.pushNamed(context, DetailScreen.routeName,arguments: {
                     'path': cars[0].secondPath[itemIndex],
                     'text': cars[0].text[itemIndex],
                     'description': cars[0].description[itemIndex]
@@ -89,7 +89,7 @@ class CarWidget extends StatelessWidget {
                           width: 136,
                           height: 136,
                         ),
-                        // SizedBox(height: 10,),
+                         //SizedBox(height: 10,),
                         Text(cars[0].text[itemIndex],
                           style: const TextStyle(
                             //fontSize: 12,

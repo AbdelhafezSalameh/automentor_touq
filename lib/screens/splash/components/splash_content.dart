@@ -5,24 +5,27 @@ import '../../../size_config.dart';
 
 class SplashContent extends StatelessWidget {
   const SplashContent({
-    Key? key,
+    super.key,
     this.title,
     this.text,
     this.image,
-  }) : super(key: key);
-  final String? text, image,title;
+  });
+
+  final String? text, image, title;
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      children: <Widget>[
-        Spacer(flex: 2,),
+      children: [
+        const Spacer(
+          flex: 2,
+        ),
         Image.asset(
           image!,
           height: getProportionateScreenHeight(300),
           width: getProportionateScreenWidth(300),
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           title!,
           style: TextStyle(
@@ -31,16 +34,14 @@ class SplashContent extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 20,),
+        const SizedBox(
+          height: 20,
+        ),
         Text(
           text!,
           textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 16
-          ),
+          style: const TextStyle(fontSize: 16),
         ),
-
-
       ],
     );
   }

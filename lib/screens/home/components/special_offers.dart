@@ -7,7 +7,6 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../../size_config.dart';
 import '../../news/news_page.dart';
-import 'section_title.dart';
 
 class SpecialOffers extends StatefulWidget {
   const SpecialOffers({
@@ -34,6 +33,7 @@ class _SpecialOffersState extends State<SpecialOffers> {
   List<NewsCard> newsCard = [];
   Dio dio = Dio();
   void getData()async{
+
     final response =await dio.get('http://192.168.1.8:8080/get-data');
 
     List fetchData = response.data;

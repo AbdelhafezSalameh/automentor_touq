@@ -66,26 +66,26 @@ class _CartCardState extends State<CartCard> {
                     ),
                   ),
                   Spacer(),
-                  InkWell(
-                      onTap: (){
-                        if(counter>0)counter--;
-                        else demoCarts.remove(widget.cart.product);
-                        setState(() {
-
-                        });
-                      },
-                      child: Text('-',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold))),
-                  SizedBox(width: getProportionateScreenWidth(10),),
-                  Text(counter.toString(),style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold)),
-                  SizedBox(width: getProportionateScreenWidth(10),),
-                  InkWell(
-                      onTap: (){
-                        counter++;
-                        setState(() {
-
-                        });
-                      },
-                      child: Text('+',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),)),
+                  // InkWell(
+                  //     onTap: (){
+                  //       if(counter>0)counter--;
+                  //       else demoCarts.remove(widget.cart.product);
+                  //       setState(() {
+                  //
+                  //       });
+                  //     },
+                  //     child: Text('-',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold))),
+                  // SizedBox(width: getProportionateScreenWidth(10),),
+                  // Text(counter.toString(),style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold)),
+                  // SizedBox(width: getProportionateScreenWidth(10),),
+                  // InkWell(
+                  //     onTap: (){
+                  //       counter++;
+                  //       setState(() {
+                  //
+                  //       });
+                  //     },
+                  //     child: Text('+',style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold),)),
                 ],
               ),
             )

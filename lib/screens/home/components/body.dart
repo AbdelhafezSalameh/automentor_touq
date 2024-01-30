@@ -1,16 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../size_config.dart';
-import '../../favourite_screen/fav_items.dart';
-import '../../profile/profile_screen.dart';
-import '../home_screen.dart';
-import 'categories.dart';
-import 'home_header.dart';
-import 'popular_product.dart';
-import 'special_offers.dart';
+
 
 class Body extends StatefulWidget {
+  const Body({super.key});
+
   @override
   State<Body> createState() => _BodyState();
 }
@@ -59,7 +54,7 @@ class _BodyState extends State<Body> {
           },
         ),
       ),
-      body: SizedBox(),
+      body: Container(width: 20,height: 20,color: Colors.red,),
     );
   }
 }

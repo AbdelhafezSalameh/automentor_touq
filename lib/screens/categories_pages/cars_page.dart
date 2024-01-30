@@ -106,11 +106,11 @@ class LogoDetailScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('$logoName Cars'),
+        title: Text('$logoName Cars',style: TextStyle(fontSize: 17,fontFamily: 'Poppins'),),
       ),
       body: Center(
         child: Text(
-            'Currently There\'s No Manuals   \n for  $logoName Cars',
+            'Currently There\'s No Manuals\n for $logoName Cars',
         textAlign: TextAlign.center,
         ), // Customize the details based on the logo
       ),

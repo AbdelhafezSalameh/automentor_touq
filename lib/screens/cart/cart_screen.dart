@@ -19,15 +19,26 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 1,
+        backgroundColor: Colors.white,
+        automaticallyImplyLeading: false,
         title: Column(
           children: [
             const Text(
               "Your Cart",
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Poppins',
+                fontSize: 25
+              ),
             ),
             Text(
               "${demoCarts.length} items",
-              style: Theme.of(context).textTheme.bodySmall,
+              style: TextStyle(
+                fontSize: 15,
+                fontFamily: 'Poppins',
+                color: Colors.grey.shade600
+              ),
             ),
           ],
         ),
